@@ -614,13 +614,12 @@ function MiniCourses() {
   return (
     <section className="bg-ink-900 py-20 md:py-28 px-5 md:px-8">
       <div className="max-w-container mx-auto">
-        <Eyebrow className="mb-4">3 Mini-Courses included</Eyebrow>
-        <Display size="m" className="text-paper-100 max-w-[920px] mb-4">
-          Lifetime access<br /><span className="text-butter-500">to the full curriculum.</span>
+        <Eyebrow className="mb-4">Video &amp; Text Curriculum</Eyebrow>
+        <Display size="m" className="text-paper-100 max-w-[920px] mb-5">
+          3 Self-Publishing<br /><span className="text-butter-500">Mini-Courses.</span>
         </Display>
         <p className="font-serif text-[18px] text-ink-200 mb-14 max-w-[720px]">
-          Three complete mini-courses delivered alongside the live bootcamp. Buy once, study forever.
-          The same frameworks used across 10+ books and over $500,000 in royalties.
+          Get access to the Self-Publishing Studio self-study course:
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {courses.map((c) => (
