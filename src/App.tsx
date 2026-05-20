@@ -179,13 +179,13 @@ function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> })
       <div className="relative flex-1 flex items-center w-full z-10">
         <div className="max-w-container mx-auto w-full px-5 md:px-8 py-6 md:py-8 grid lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-14 items-center">
           {/* Left — eyebrow + headline + subhead + CTA + countdown */}
-          <div className="max-w-[680px]">
+          <div className="max-w-[680px] mx-auto lg:mx-0 text-center lg:text-left">
             <p className="font-sans font-bold uppercase tracking-caps text-butter-500 mb-4 md:mb-5" style={{ fontSize: 'clamp(11px, 0.95vw, 14px)' }}>
               Self-Publishing Studio LIVE
             </p>
             <h1
               className="font-display font-black uppercase text-paper-100 tracking-display mb-5"
-              style={{ fontSize: 'clamp(30px, 4.8vw, 72px)', lineHeight: 0.98 }}
+              style={{ fontSize: 'clamp(40px, 4.8vw, 72px)', lineHeight: 0.98 }}
             >
               How To Write Your<br />
               First (Or Next)<br />
@@ -193,7 +193,7 @@ function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> })
               In 14 Days
             </h1>
             <p
-              className="font-serif text-paper-200 mb-6 max-w-[560px]"
+              className="font-serif text-paper-200 mb-6 max-w-[560px] mx-auto lg:mx-0"
               style={{ fontSize: 'clamp(15px, 1.3vw, 19px)', lineHeight: 1.5 }}
             >
               Write, publish, and market a book that builds your business and finally position yourself
@@ -202,7 +202,7 @@ function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> })
             <a
               ref={ctaRef}
               href={DEFAULT_CTA_URL}
-              className="block w-full sm:max-w-[520px] text-center bg-butter-500 text-ink-900 font-sans font-bold uppercase tracking-[0.08em] rounded-[3px] shadow-hard hover:bg-butter-400 active:bg-butter-600 transition-colors"
+              className="block w-full sm:max-w-[520px] text-center mx-auto lg:mx-0 bg-butter-500 text-ink-900 font-sans font-bold uppercase tracking-[0.08em] rounded-[3px] shadow-hard hover:bg-butter-400 active:bg-butter-600 transition-colors"
               style={{ padding: '20px 28px', fontSize: 'clamp(13px, 1.1vw, 16px)' }}
             >
               Join Self-Publishing Studio LIVE
