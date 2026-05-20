@@ -43,11 +43,13 @@ function Display({
   children,
   size = 'l',
   className = '',
+  style,
   as: Tag = 'h2',
 }: {
   children: React.ReactNode
   size?: 'xl' | 'l' | 'm' | 's'
   className?: string
+  style?: React.CSSProperties
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'div'
 }) {
   const sizeClass = {
@@ -57,7 +59,7 @@ function Display({
     s: 'text-[clamp(28px,4vw,48px)]',
   }[size]
   return (
-    <Tag className={`font-display font-black uppercase leading-display tracking-display ${sizeClass} ${className}`}>
+    <Tag className={`font-display font-black uppercase leading-display tracking-display ${sizeClass} ${className}`} style={style}>
       {children}
     </Tag>
   )
@@ -86,18 +88,6 @@ function PrimaryCTA({
           ? 'px-9 py-5 text-[16px] tracking-[0.08em] shadow-hard'
           : 'px-6 py-3.5 text-[13px] tracking-[0.08em] shadow-hard-sm'
       } ${className}`}
-    >
-      {children}
-    </a>
-  )
-}
-
-/* ─── Ghost CTA (transparent + butter outline) ─── */
-function GhostCTA({ children, href = DEFAULT_CTA_URL }: { children: React.ReactNode; href?: string }) {
-  return (
-    <a
-      href={href}
-      className="inline-block font-sans font-bold uppercase text-butter-500 border-2 border-butter-500 rounded-[3px] px-5 py-3 text-[13px] tracking-[0.08em] hover:bg-butter-500/10 transition-colors"
     >
       {children}
     </a>
@@ -154,47 +144,12 @@ function CountdownTimer({ targetDate, compact, onLight }: { targetDate: Date; co
 }
 
 /* ═══════════════════════════════════════════════════════════
-   TOP BAR — Sticky nav
-   ═══════════════════════════════════════════════════════════ */
-function TopBar() {
-  return (
-    <header className="sticky top-0 z-40 bg-ink-900 border-b border-ink-700">
-      <div className="max-w-container mx-auto px-5 md:px-8 h-[68px] flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-3">
-          <img src="/images/sps/bookshelf-mark.svg" alt="" className="w-8 h-8" />
-          <span className="font-display font-black uppercase text-[18px] md:text-[20px] text-butter-500 leading-none tracking-caps-lg whitespace-nowrap">
-            Self-Publishing Studio
-          </span>
-        </a>
-        <nav className="hidden md:flex items-center gap-7">
-          {[
-            { label: 'Curriculum', href: '#curriculum' },
-            { label: 'Captains', href: '#captains' },
-            { label: 'Bonuses', href: '#bonuses' },
-            { label: 'FAQ', href: '#faq' },
-          ].map((l) => (
-            <a key={l.label} href={l.href} className="font-sans font-semibold text-[13px] uppercase tracking-[0.04em] text-paper-200 hover:text-butter-500 transition-colors">
-              {l.label}
-            </a>
-          ))}
-          <PrimaryCTA>Join the studio</PrimaryCTA>
-        </nav>
-        <div className="md:hidden">
-          <a href={DEFAULT_CTA_URL} className="inline-block bg-butter-500 text-ink-900 font-sans font-bold uppercase text-[12px] tracking-[0.06em] px-4 py-2.5 rounded-[3px]">
-            Join
-          </a>
-        </div>
-      </div>
-    </header>
-  )
-}
-
-/* ═══════════════════════════════════════════════════════════
-   HERO — Book pattern + giant Barlow + product render
+   HERO — Book pattern + Barlow display + product render
+   Designed to fit within one viewport at 1366×768, 1440×900, 1920×1080.
    ═══════════════════════════════════════════════════════════ */
 function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> }) {
   return (
-    <section id="top" className="relative bg-ink-900 overflow-hidden">
+    <section id="top" className="relative bg-ink-900 overflow-hidden flex flex-col min-h-screen">
       {/* Book-pattern texture */}
       <div
         aria-hidden="true"
@@ -209,44 +164,52 @@ function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> })
           WebkitMaskImage: 'linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.15) 100%)',
         }}
       />
+
       {/* Top announcement pill */}
-      <div className="relative flex justify-center pt-7 pb-2 px-3">
-        <div className="inline-flex items-center gap-2 border border-ink-600 rounded-full px-4 md:px-5 py-2">
+      <div className="relative flex justify-center pt-5 md:pt-6 pb-2 px-3 flex-shrink-0">
+        <div className="inline-flex items-center gap-2 border border-ink-600 rounded-full px-4 md:px-5 py-1.5">
           <span className="w-2 h-2 rounded-full bg-butter-500 animate-pulse flex-shrink-0" />
-          <span className="font-sans text-[10px] md:text-[12px] text-paper-200 uppercase tracking-caps whitespace-nowrap">
+          <span className="font-sans text-[10px] md:text-[11px] text-paper-200 uppercase tracking-caps whitespace-nowrap">
             Live Bootcamp Begins Monday, June 1, 2026
           </span>
         </div>
       </div>
 
-      <div className="relative max-w-container mx-auto px-5 md:px-8 pt-12 pb-20 md:pt-16 md:pb-28 grid md:grid-cols-[1.4fr_1fr] gap-10 md:gap-12 items-center">
-        {/* Left — text */}
-        <div>
-          <Eyebrow className="mb-6">A live bootcamp by Nicolas Cole &amp; Dickie Bush</Eyebrow>
-          <Display size="xl" as="h1" className="text-butter-500 mb-7">
-            Write,<br />publish,<br />and sell<br />your book.
-          </Display>
-          <p className="font-serif text-[20px] md:text-[22px] leading-[1.55] text-paper-200 max-w-[560px] mb-8">
-            The complete system for writing, publishing, and marketing a non-fiction
-            book that builds your business &mdash; in <em>weeks</em>, not years.
-          </p>
-          <div className="flex flex-wrap gap-3 items-center">
-            <PrimaryCTA big onRef={ctaRef}>
-              Join the Studio &mdash; $800
-            </PrimaryCTA>
-            <GhostCTA href="#curriculum">See the curriculum</GhostCTA>
+      {/* Main content — fills remaining viewport, centered */}
+      <div className="relative flex-1 flex items-center w-full">
+        <div className="max-w-container mx-auto w-full px-5 md:px-8 py-8 md:py-10 grid md:grid-cols-[55fr_45fr] gap-8 md:gap-10 lg:gap-14 items-center">
+          {/* Left — text column */}
+          <div className="max-w-[640px]">
+            <h1
+              className="font-display font-black uppercase text-butter-500 tracking-display mb-5"
+              style={{ fontSize: 'clamp(36px, 5.5vw, 84px)', lineHeight: 1.0 }}
+            >
+              Write,<br />publish,<br />and sell<br />your book.
+            </h1>
+            <p
+              className="font-serif text-paper-200 mb-7"
+              style={{ fontSize: 'clamp(15px, 1.35vw, 19px)', lineHeight: 1.5 }}
+            >
+              The complete system for writing, publishing, and marketing a non-fiction
+              book that builds your business &mdash; in <em>weeks</em>, not years.
+            </p>
+            <div className="flex flex-wrap gap-3 items-center mb-6">
+              <PrimaryCTA big onRef={ctaRef}>
+                Join the Studio &mdash; $800
+              </PrimaryCTA>
+            </div>
+            <p className="font-sans text-[10px] uppercase tracking-caps text-ink-300 mb-2.5">Cart closes in</p>
+            <CountdownTimer targetDate={CART_CLOSE_DATE} />
           </div>
-          <p className="font-sans text-[11px] uppercase tracking-caps text-ink-300 mt-8 mb-3">Cart closes in</p>
-          <CountdownTimer targetDate={CART_CLOSE_DATE} />
-        </div>
 
-        {/* Right — product box render */}
-        <div className="flex justify-center md:justify-end">
-          <img
-            src="/images/sps/product-box-sps.png"
-            alt="Self-Publishing Studio — product box"
-            className="w-full max-w-[380px] drop-shadow-[20px_30px_40px_rgba(0,0,0,0.6)]"
-          />
+          {/* Right — product box render */}
+          <div className="flex justify-center md:justify-end items-center">
+            <img
+              src="/images/sps/product-box-sps.png"
+              alt="Self-Publishing Studio"
+              className="w-full max-w-[280px] sm:max-w-[320px] md:max-w-[340px] lg:max-w-[380px] drop-shadow-[20px_30px_40px_rgba(0,0,0,0.6)]"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -289,34 +252,70 @@ function Stats() {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   IS THIS FOR YOU
+   IS THIS FOR YOU — Accordion of em-stressed questions
    ═══════════════════════════════════════════════════════════ */
 function IsThisForYou() {
-  const points = [
-    { emoji: '✍🏼', heading: "You've been 'writing a book' for years.", body: "You have notes in a Google Doc, a draft you haven't opened in months, and a vague sense the world is missing the book you're meant to write." },
-    { emoji: '🧠', heading: 'You have the expertise. Not the system.', body: "You know your subject cold. What you don't know is how to outline it, draft it, finish it, publish it, and turn it into customers." },
-    { emoji: '📨', heading: 'You want a book that builds your business.', body: 'Not vanity hardcovers. A book that becomes the front door to your consulting, your course, your audience, and your community.' },
-    { emoji: '📚', heading: "You've tried before and didn't finish.", body: "You have a graveyard of half-finished Google Docs. The system in this studio has built-in completion mechanics so this time is different." },
-    { emoji: '🎯', heading: "You're tired of writing 'into the void.'", body: "You've published essays, tweets, and posts. A book is the asset that compounds — it positions you as the authority in your niche, on autopilot." },
-    { emoji: '💪🏼', heading: 'You want a proven framework.', body: 'No more guessing. The same system Cole has used across 10+ books to go from blank page to finished manuscript without ever getting stuck.' },
+  const questions = [
+    {
+      q: "Have you been <em>'writing a book' for years</em> but never actually finished it?",
+      a: "We've all been there — notes in a Google Doc, a half-finished draft you haven't opened in months, and a vague sense the world is missing the book you're meant to write. The Self-Publishing Studio gives you the system, the structure, and the deadlines to finally ship it. Most students draft their first book in weeks, not years.",
+    },
+    {
+      q: "Do you have <em>the expertise</em> but not the <em>system</em> to turn it into a book?",
+      a: "You know your subject cold. What you don't know is how to organize it into chapters, how to outline a non-fiction book that actually sells, how to publish on Amazon, and how to market it after launch. This studio gives you the exact framework Cole has used across 10+ books and $1,000,000+ in royalties.",
+    },
+    {
+      q: "Do you want a book that <em>builds your business</em> — not just sits on a shelf?",
+      a: "Most books don't make money because most authors treat the book as the product. Inside the studio you'll learn how to treat your book as the front door to your business — the asset that turns readers into newsletter subscribers, digital product buyers, and clients. A $10 book becomes a $10,000 customer.",
+    },
+    {
+      q: "Are you tired of writing posts and essays <em>into the void</em> with nothing to sell?",
+      a: "You've built an audience on X, LinkedIn, or Substack. A book is the asset that compounds — it positions you as the authority in your niche, on autopilot. Inside, we walk you through the exact launch strategy that's sold tens of thousands of books without a PR firm or podcast tour.",
+    },
+    {
+      q: "Do you want to use AI to <em>accelerate</em> — without producing generic AI slop?",
+      a: "There's a difference between AI-generated slop (which Amazon flags and reputable readers hate) and AI-assisted authorship (which is the new standard). Inside Manuscript OS and AI Author Autopilot, you'll learn how to use AI as a power tool while keeping every page recognizably yours.",
+    },
   ]
 
+  const [open, setOpen] = useState<number | null>(null)
+
   return (
-    <section className="bg-ink-800 py-20 md:py-28 px-5 md:px-8">
-      <div className="max-w-container mx-auto">
-        <Eyebrow className="mb-4">Is the studio right for you?</Eyebrow>
-        <Display size="m" className="text-paper-100 max-w-[920px] mb-14">
-          If any of this sounds familiar,<br />
-          <span className="text-butter-500">the studio was built for you.</span>
-        </Display>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {points.map((p) => (
-            <div key={p.heading} className="bg-ink-900 border border-ink-700 rounded-[4px] p-7">
-              <div className="text-[36px] leading-none mb-4">{p.emoji}</div>
-              <h3 className="font-sans font-bold text-[18px] text-paper-100 mb-3 leading-tight">{p.heading}</h3>
-              <p className="font-serif text-[15px] leading-[1.55] text-ink-200">{p.body}</p>
+    <section className="bg-ink-900 py-20 md:py-28 px-5 md:px-8">
+      <div className="max-w-narrow mx-auto">
+        <div className="border-l-[6px] border-butter-500 pl-5 mb-10">
+          <Eyebrow className="mb-2">Is the studio right for you?</Eyebrow>
+          <Display size="m" className="text-paper-100">Let's find out.</Display>
+        </div>
+
+        <div className="space-y-3">
+          {questions.map((q, i) => (
+            <div
+              key={i}
+              className={`bg-ink-900 border rounded-[4px] px-6 py-5 cursor-pointer transition-colors ${
+                open === i ? 'border-butter-500/50' : 'border-ink-700 hover:border-ink-600'
+              }`}
+              onClick={() => setOpen(open === i ? null : i)}
+            >
+              <div className="flex items-center justify-between gap-4">
+                <h3
+                  className="font-sans text-[16px] md:text-[18px] text-paper-100 font-medium [&_em]:not-italic [&_em]:text-butter-500 [&_em]:font-bold"
+                  dangerouslySetInnerHTML={{ __html: q.q }}
+                />
+                <span className={`font-display font-black text-[24px] leading-none flex-shrink-0 transition-transform duration-200 ${open === i ? 'rotate-45 text-butter-500' : 'text-ink-400'}`}>
+                  +
+                </span>
+              </div>
+              {open === i && (
+                <p className="font-serif text-[15px] md:text-[16px] text-paper-200 leading-[1.6] mt-4 pb-1">{q.a}</p>
+              )}
             </div>
           ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <p className="font-serif text-[18px] italic text-ink-200 mb-6">If any of these sound like you&hellip; this bootcamp was made for you.</p>
+          <PrimaryCTA big>Join the Studio &mdash; $800</PrimaryCTA>
         </div>
       </div>
     </section>
@@ -324,58 +323,79 @@ function IsThisForYou() {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   CURRICULUM — 6 live sessions
+   CURRICULUM — 6 sessions on a vertical timeline
    ═══════════════════════════════════════════════════════════ */
 function Curriculum() {
   const sessions = [
-    { num: 1, date: 'Mon Jun 1', emoji: '🎯', title: 'The Perfect Book Title', desc: 'How to craft a title that positions you as the authority in your niche, attracts the right reader, and ranks on Amazon.', asset: 'The Perfect Book Title Generator' },
-    { num: 2, date: 'Wed Jun 3', emoji: '🗺️', title: 'Your Origin Story', desc: 'Why people will read YOUR book — your earned authority, your unique angle, and the story only you can tell.', asset: 'Origin Story Interview Prompt' },
-    { num: 3, date: 'Fri Jun 5', emoji: '📖', title: 'Outlining Your Book', desc: "Reverse-engineer a bulletproof outline from your reader's questions. Walk away with a complete skeleton you can draft against.", asset: 'Book Outline Crafter' },
-    { num: 4, date: 'Mon Jun 8', emoji: '✍🏼', title: 'Outlining Each Chapter', desc: 'The chapter-level framework Cole has used across 10+ books. Clear, valuable, and actually enjoyable to read.', asset: 'The Perfect Book Chapter Template' },
-    { num: 5, date: 'Wed Jun 10', emoji: '⚡️', title: 'Book Writing Fundamentals', desc: 'How to draft without getting stuck. Use AI to accelerate the heavy lifting while keeping every page recognizably yours.', asset: 'Book Chapter Autowriter' },
-    { num: 6, date: 'Fri Jun 12', emoji: '🚀', title: 'Book Launch Blueprint', desc: "The evergreen marketing strategy that's generated $1M+ in royalties — without a PR firm, podcast tour, or massive budget.", asset: 'Book Launch Checklist' },
+    { num: 1, date: 'Mon Jun 1', title: 'The Perfect Book Title', desc: 'How to craft a title that positions you as the authority in your niche, attracts the right reader, and ranks on Amazon.', asset: 'The Perfect Book Title Generator' },
+    { num: 2, date: 'Wed Jun 3', title: 'Your Origin Story (Credibility & POV)', desc: 'Why people will read YOUR book — your earned authority, your unique angle, and the story only you can tell.', asset: 'Origin Story Interview Prompt' },
+    { num: 3, date: 'Fri Jun 5', title: 'Outlining Your Book', desc: "Reverse-engineer a bulletproof outline from your reader's questions. Walk away with a complete skeleton you can draft against.", asset: 'Book Outline Crafter' },
+    { num: 4, date: 'Mon Jun 8', title: 'Outlining Each Chapter', desc: 'The chapter-level framework Cole has used across 10+ books. Clear, valuable, and actually enjoyable to read.', asset: 'The Perfect Book Chapter Template' },
+    { num: 5, date: 'Wed Jun 10', title: 'Book Writing Fundamentals', desc: 'How to draft without getting stuck. Use AI to accelerate the heavy lifting while keeping every page recognizably yours.', asset: 'Book Chapter Autowriter' },
+    { num: 6, date: 'Fri Jun 12', title: 'Book Launch Blueprint', desc: "The evergreen marketing strategy that's generated $1M+ in royalties — without a PR firm, podcast tour, or massive budget.", asset: 'Book Launch Checklist' },
   ]
 
   return (
-    <section id="curriculum" className="bg-ink-900 py-20 md:py-28 px-5 md:px-8">
-      <div className="max-w-container mx-auto">
-        <Eyebrow className="mb-4">The 6 live sessions</Eyebrow>
-        <Display size="m" className="text-butter-500 max-w-[1000px] mb-4">
-          From blank page to<br />
-          <span className="text-paper-100">published book.</span>
+    <section id="curriculum" className="bg-paper-100 py-20 md:py-28 px-5 md:px-8">
+      <div className="max-w-narrow mx-auto">
+        <Eyebrow className="text-rust-500 mb-3 text-center">The 6 live sessions</Eyebrow>
+        <Display size="m" className="text-ink-900 text-center mb-3">
+          Here's what<br /><span className="text-rust-500">you'll build.</span>
         </Display>
-        <p className="font-serif text-[18px] text-ink-200 mb-12 max-w-[720px]">
-          Six 60-minute live sessions over two weeks. M/W/F. Every session comes with a plug-and-play AI writing asset
-          you can use immediately to build your book in real time.
+        <p className="font-serif text-[15px] text-ink-700 text-center mb-14">
+          All sessions 60 min &middot; M/W/F &middot; 3:00 PM ET &middot; June 1 &ndash; June 12, 2026
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {sessions.map((s) => (
-            <div key={s.num} className="bg-ink-800 border border-ink-700 rounded-[4px] p-7 flex flex-col gap-3.5">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <span className="font-display font-black text-[28px] text-butter-500 leading-none">#{s.num}</span>
-                  <span className="font-sans text-[11px] font-bold uppercase tracking-caps text-ink-300 bg-ink-900 border border-ink-700 px-2.5 py-1 rounded-[2px]">
-                    {s.date}
-                  </span>
+        {/* Timeline */}
+        <div className="relative">
+          {/* Vertical line — desktop center */}
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[2px] bg-rust-500/30 -translate-x-1/2" />
+          {/* Vertical line — mobile left */}
+          <div className="md:hidden absolute left-5 top-0 bottom-0 w-[2px] bg-rust-500/30" />
+
+          <div className="space-y-10 md:space-y-14">
+            {sessions.map((s) => {
+              const isEven = s.num % 2 === 0
+              return (
+                <div key={s.num} className="relative">
+                  {/* Numbered circle on the line */}
+                  <div className="absolute z-10 w-11 h-11 rounded-full bg-ink-900 border-2 border-butter-500 flex items-center justify-center left-0 md:left-1/2 md:-translate-x-1/2">
+                    <span className="font-display font-black text-[18px] text-butter-500 leading-none">{s.num}</span>
+                  </div>
+
+                  {/* Content — desktop alternates, mobile always right */}
+                  <div className={`pl-16 md:pl-0 md:w-[45%] ${isEven ? 'md:ml-auto md:pl-14' : 'md:mr-auto md:pr-14 md:text-right'}`}>
+                    <span className="inline-block bg-ink-900 text-butter-500 font-sans text-[11px] font-bold uppercase tracking-caps px-3 py-1 rounded-[2px] mb-2.5">
+                      {s.date}
+                    </span>
+                    <Display size="s" as="h3" className="text-ink-900 mb-2.5" style={{ fontSize: 'clamp(22px, 2.5vw, 30px)' }}>{s.title}</Display>
+                    <p className="font-serif text-[15px] text-ink-700 leading-[1.55] mb-3">{s.desc}</p>
+                    <div className={`inline-block bg-paper-200 border border-paper-300 rounded-[2px] px-3 py-1.5 ${isEven ? '' : 'md:ml-auto'}`}>
+                      <p className="font-sans text-[10px] font-bold uppercase tracking-caps text-rust-500 mb-0.5">Asset included</p>
+                      <p className="font-sans text-[13px] font-semibold text-ink-900">{s.asset}</p>
+                    </div>
+                  </div>
                 </div>
-                <span className="text-[26px] leading-none">{s.emoji}</span>
-              </div>
-              <Display size="s" className="text-paper-100" as="h3">{s.title}</Display>
-              <p className="font-serif text-[15px] leading-[1.55] text-ink-200">{s.desc}</p>
-              <div className="mt-auto pt-3 border-t border-ink-700">
-                <p className="font-sans text-[11px] font-bold uppercase tracking-caps text-butter-500 mb-1">Asset included</p>
-                <p className="font-sans text-[14px] font-semibold text-paper-200">{s.asset}</p>
-              </div>
-            </div>
-          ))}
+              )
+            })}
+          </div>
         </div>
 
-        <div className="mt-12 text-center">
-          <p className="font-serif text-[18px] italic text-ink-200 mb-7">
-            Every session comes with a replay &mdash; available within hours &mdash; so you can reference it forever.
+        {/* Closing */}
+        <div className="mt-16 text-center">
+          <Display size="s" className="text-ink-900 leading-[1.05] mb-5" style={{ fontSize: 'clamp(22px, 3vw, 36px)' }}>
+            We build <span className="text-rust-500">together</span>.<br />
+            You leave with <span className="text-rust-500">a finished manuscript</span>.
+          </Display>
+          <p className="font-serif text-[16px] text-ink-700 mb-8">
+            This isn't self-paced content you buy and forget.
           </p>
-          <PrimaryCTA big>Join the Studio &mdash; $800</PrimaryCTA>
+          <a
+            href={DEFAULT_CTA_URL}
+            className="inline-block bg-ink-900 text-butter-500 font-sans font-bold uppercase text-[15px] tracking-[0.08em] px-9 py-5 rounded-[3px] hover:bg-ink-800 transition-colors shadow-hard"
+          >
+            Join the Studio &mdash; $800
+          </a>
         </div>
       </div>
     </section>
@@ -402,28 +422,28 @@ function Captains() {
   ]
 
   return (
-    <section id="captains" className="bg-ink-800 py-20 md:py-28 px-5 md:px-8">
+    <section id="captains" className="bg-paper-100 py-20 md:py-28 px-5 md:px-8">
       <div className="max-w-container mx-auto">
-        <Eyebrow className="mb-4">Ahoy from your captains</Eyebrow>
-        <Display size="m" className="text-butter-500 max-w-[920px] mb-14">
+        <Eyebrow className="text-rust-500 mb-3">Ahoy from your captains</Eyebrow>
+        <Display size="m" className="text-ink-900 max-w-[920px] mb-14">
           We've written<br />
-          <span className="text-paper-100">14 books between us.</span>
+          <span className="text-rust-500">14 books between us.</span>
         </Display>
         <div className="grid md:grid-cols-2 gap-5">
           {captains.map((c) => (
-            <div key={c.name} className="bg-ink-900 border border-ink-700 rounded-[4px] p-8 flex flex-col gap-5">
+            <div key={c.name} className="bg-paper-200 border border-paper-300 rounded-[4px] p-8 flex flex-col gap-5">
               <div className="flex items-center gap-5">
-                <div className="w-[72px] h-[72px] rounded-full bg-butter-500 text-ink-900 flex items-center justify-center font-display font-black text-[28px] tracking-caps-lg flex-shrink-0">
+                <div className="w-[72px] h-[72px] rounded-full bg-ink-900 text-butter-500 flex items-center justify-center font-display font-black text-[28px] tracking-caps-lg flex-shrink-0">
                   {c.initials}
                 </div>
                 <div>
-                  <Display size="s" className="text-paper-100">{c.name}</Display>
-                  <p className="font-sans font-semibold text-[13px] tracking-caps-lg text-butter-500 mt-1.5">
+                  <Display size="s" className="text-ink-900">{c.name}</Display>
+                  <p className="font-sans font-semibold text-[13px] tracking-caps-lg text-rust-500 mt-1.5">
                     🐦 {c.handle}
                   </p>
                 </div>
               </div>
-              <p className="font-serif text-[16px] leading-[1.55] text-paper-200">{c.bio}</p>
+              <p className="font-serif text-[16px] leading-[1.55] text-ink-700">{c.bio}</p>
             </div>
           ))}
         </div>
@@ -758,40 +778,16 @@ function FAQ() {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   FOOTER
+   FOOTER — Minimal copyright line
    ═══════════════════════════════════════════════════════════ */
 function Footer() {
   return (
-    <footer className="bg-ink-950 border-t border-ink-700 px-5 md:px-8 pt-16 pb-12">
-      <div className="max-w-container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-10">
-          <div>
-            <img src="/images/sps/wordmark-inline.svg" alt="Self-Publishing Studio" className="h-8 mb-5" />
-            <p className="font-serif text-[15px] leading-[1.55] text-ink-300 max-w-[340px]">
-              A live bootcamp by Nicolas Cole &amp; Dickie Bush. Part of the Ship 30 for 30 family of products.
-            </p>
-          </div>
-          {[
-            { h: 'The Studio', links: ['Curriculum', 'Captains', 'Bonuses', 'FAQ'] },
-            { h: 'Other products', links: ['Ship 30 for 30', 'Premium Ghostwriting Academy', 'AI Writing Skool', 'Typeshare'] },
-            { h: 'Connect', links: ['🐦 Cole on X', '🐦 Dickie on X', '📺 YouTube', '🎧 Podcast'] },
-          ].map((col) => (
-            <div key={col.h}>
-              <p className="font-sans text-[11px] font-bold uppercase tracking-caps text-butter-500 mb-4">{col.h}</p>
-              <ul className="list-none p-0 m-0 flex flex-col gap-2">
-                {col.links.map((l) => (
-                  <li key={l}>
-                    <a href="#" className="text-ink-200 text-[14px] hover:text-butter-500 transition-colors">{l}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <div className="max-w-container mx-auto mt-12 pt-6 border-t border-ink-700 flex flex-col sm:flex-row justify-between gap-3 font-sans text-[12px] text-ink-500">
-          <span>&copy; 2026 Ship 30 for 30, LLC. All rights reserved.</span>
-          <span>Privacy &middot; Terms</span>
-        </div>
+    <footer className="bg-ink-950 border-t border-ink-700 px-5 md:px-8 py-10">
+      <div className="max-w-container mx-auto text-center">
+        <img src="/images/sps/wordmark-inline.svg" alt="Self-Publishing Studio" className="h-7 mx-auto mb-4 opacity-70" />
+        <p className="font-sans text-[12px] text-ink-500">
+          &copy; 2026 Ship 30 for 30, LLC. All rights reserved.
+        </p>
       </div>
     </footer>
   )
@@ -847,11 +843,10 @@ export default function App() {
 
   return (
     <main className="min-h-screen bg-ink-900">
-      <TopBar />
       <Hero ctaRef={heroCtaRef} />
       <FadeIn><Stats /></FadeIn>
-      <FadeIn><IsThisForYou /></FadeIn>
       <FadeIn><Captains /></FadeIn>
+      <FadeIn><IsThisForYou /></FadeIn>
       <FadeIn><Curriculum /></FadeIn>
       <FadeIn><MiniCourses /></FadeIn>
       <FadeIn><Bonuses /></FadeIn>
