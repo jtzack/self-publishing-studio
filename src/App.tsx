@@ -774,6 +774,7 @@ function Pricing() {
     { name: 'BONUS: Indie vs. Traditional Crash Course', price: '$497' },
     { name: 'BONUS: AI Author Autopilot', price: '$997' },
     { name: 'BONUS: Book Monetization Mastery', price: '$997' },
+    { name: '30-Day AI Writing Skool Trial', price: '$99' },
   ]
 
   return (
@@ -801,7 +802,7 @@ function Pricing() {
             ))}
             <div className="flex justify-between items-center pt-4 mt-3 border-t border-ink-600">
               <span className="font-sans text-[14px] font-bold text-paper-100">Total Value</span>
-              <span className="font-display font-black text-[24px] text-paper-100 line-through decoration-rust-500 decoration-2">$13,091</span>
+              <span className="font-display font-black text-[24px] text-paper-100 line-through decoration-rust-500 decoration-2">$13,190</span>
             </div>
           </div>
 
