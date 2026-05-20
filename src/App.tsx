@@ -213,29 +213,29 @@ function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> })
 
           {/* Right — overlapping captain circles */}
           <div className="hidden md:flex justify-center md:justify-end items-center">
-            <div className="relative w-[380px] h-[420px] lg:w-[440px] lg:h-[440px]">
+            <div className="relative w-[270px] h-[340px] lg:w-[420px] lg:h-[440px]">
               {/* Dickie Bush — top-right, forest bg, behind */}
               <div className="absolute right-0 top-0 z-10 flex flex-col items-center">
                 <div
-                  className="w-[200px] h-[200px] lg:w-[220px] lg:h-[220px] rounded-full overflow-hidden border-4 border-ink-900"
+                  className="w-[140px] h-[140px] lg:w-[210px] lg:h-[210px] rounded-full overflow-hidden border-4 border-ink-900"
                   style={{ backgroundColor: '#4A7C59' }}
                 >
                   <img src="/images/sps/dickie-circle.png" alt="Dickie Bush" className="w-full h-full object-cover object-top" />
                 </div>
-                <p className="font-display font-black uppercase text-paper-100 mt-3 text-[18px] tracking-caps-lg">Dickie Bush</p>
-                <p className="font-sans text-[10px] font-bold uppercase tracking-caps text-ink-300 mt-1 text-center">Co-Founder,<br />Ship 30 for 30</p>
+                <p className="font-display font-black uppercase text-paper-100 mt-2.5 text-[15px] lg:text-[18px] tracking-caps-lg">Dickie Bush</p>
+                <p className="font-sans text-[9px] lg:text-[10px] font-bold uppercase tracking-caps text-ink-300 mt-1 text-center">Co-Founder,<br />Ship 30 for 30</p>
               </div>
 
               {/* Nicolas Cole — bottom-left, rust bg, in front (overlaps Dickie) */}
               <div className="absolute left-0 bottom-0 z-20 flex flex-col items-center">
                 <div
-                  className="w-[240px] h-[240px] lg:w-[270px] lg:h-[270px] rounded-full overflow-hidden border-4 border-ink-900"
+                  className="w-[180px] h-[180px] lg:w-[260px] lg:h-[260px] rounded-full overflow-hidden border-4 border-ink-900"
                   style={{ backgroundColor: '#B8633A' }}
                 >
                   <img src="/images/sps/cole-circle.png" alt="Nicolas Cole" className="w-full h-full object-cover object-top" />
                 </div>
-                <p className="font-display font-black uppercase text-paper-100 mt-3 text-[18px] tracking-caps-lg">Nicolas Cole</p>
-                <p className="font-sans text-[10px] font-bold uppercase tracking-caps text-ink-300 mt-1 text-center">Co-Founder,<br />Premium Ghostwriting Academy</p>
+                <p className="font-display font-black uppercase text-paper-100 mt-2.5 text-[15px] lg:text-[18px] tracking-caps-lg">Nicolas Cole</p>
+                <p className="font-sans text-[9px] lg:text-[10px] font-bold uppercase tracking-caps text-ink-300 mt-1 text-center">Co-Founder,<br />Premium Ghostwriting Academy</p>
               </div>
             </div>
           </div>
@@ -538,7 +538,7 @@ function Captains() {
         <div>
           <Eyebrow className="text-rust-500 mb-5">Meet Your Instructors</Eyebrow>
           <Display size="m" className="text-paper-100 mb-6">
-            Built by an author<br />
+            Built by a best-selling author<br />
             <span className="text-butter-500">with 10+ published books.</span>
           </Display>
           <p className="font-serif text-[17px] text-ink-200 leading-[1.55] max-w-[520px] mb-8">
