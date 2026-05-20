@@ -643,7 +643,7 @@ function MiniCourses() {
    BONUSES — 3 cards
    ═══════════════════════════════════════════════════════════ */
 function Bonuses() {
-  const bonuses = [
+  const bonuses: { num: number; emoji: string; title: string; value: string; desc: string; expires?: string }[] = [
     {
       num: 1,
       emoji: '⚖️',
@@ -656,6 +656,7 @@ function Bonuses() {
       emoji: '🤖',
       title: 'AI Author Autopilot',
       value: '$997 Value',
+      expires: 'Expires June 2, 2026',
       desc: "Don't have time to write a book? This bonus gives you the exact AI system used to accelerate every stage of the writing process — from outlining to drafting to editing — without producing the kind of generic AI slop that kills your credibility. You do the thinking. AI handles the heavy lifting.",
     },
     {
@@ -663,6 +664,7 @@ function Bonuses() {
       emoji: '💰',
       title: 'Book Monetization Mastery',
       value: '$997 Value',
+      expires: 'Expires June 5, 2026',
       desc: "Most books don't make money — because most authors treat the book as the product. This bonus shows you how to treat your book as the front door to your business: the entry point that turns readers into newsletter subscribers, digital product buyers, clients, and more. This is how a $10 book becomes a $10,000 customer.",
     },
   ]
@@ -685,7 +687,12 @@ function Bonuses() {
                 <span className="text-[28px] leading-none">{b.emoji}</span>
               </div>
               <Display size="s" as="h3" className="text-paper-100">{b.title}</Display>
-              <p className="font-sans font-bold text-[14px] text-butter-500 tracking-caps">{b.value}</p>
+              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <p className="font-sans font-bold text-[14px] text-butter-500 tracking-caps">{b.value}</p>
+                {b.expires && (
+                  <p className="font-sans font-bold text-[11px] uppercase tracking-caps text-rust-400">&middot; {b.expires}</p>
+                )}
+              </div>
               <p className="font-serif text-[15px] leading-[1.55] text-ink-200">{b.desc}</p>
             </div>
           ))}
@@ -756,16 +763,17 @@ function AIWritingSkool() {
 function Pricing() {
   const items = [
     { name: '6 x 60-Minute Live Sessions', price: '$3,600' },
-    { name: '6 AI-Powered Writing Assets', price: '$600' },
-    { name: 'Session Replays', price: '$300' },
-    { name: 'Lifetime Access to the Curriculum', price: 'Priceless' },
+    { name: 'A 2-Week Build & Launch Schedule', price: '$1,000' },
+    { name: 'The Bootcamp Session Guide', price: '$600' },
+    { name: '6 Done-For-You Prompts & Templates', price: '$600' },
     { name: 'Mini-Course #1: Manuscript OS', price: '$1,500' },
     { name: 'Mini-Course #2: Self-Publishing Empire', price: '$1,500' },
     { name: 'Mini-Course #3: Book Launch Blueprint', price: '$1,500' },
+    { name: 'Session Replays', price: '$300' },
+    { name: 'Lifetime Access to the Curriculum', price: 'Priceless' },
     { name: 'BONUS: Indie vs. Traditional Crash Course', price: '$497' },
     { name: 'BONUS: AI Author Autopilot', price: '$997' },
     { name: 'BONUS: Book Monetization Mastery', price: '$997' },
-    { name: '30-Day AI Writing Skool Trial', price: 'Free' },
   ]
 
   return (
@@ -793,7 +801,7 @@ function Pricing() {
             ))}
             <div className="flex justify-between items-center pt-4 mt-3 border-t border-ink-600">
               <span className="font-sans text-[14px] font-bold text-paper-100">Total Value</span>
-              <span className="font-display font-black text-[24px] text-paper-100 line-through decoration-rust-500 decoration-2">$11,491</span>
+              <span className="font-display font-black text-[24px] text-paper-100 line-through decoration-rust-500 decoration-2">$13,091</span>
             </div>
           </div>
 
