@@ -220,19 +220,7 @@ function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> })
                   className="w-[68px] h-[68px] lg:w-[88px] lg:h-[88px] rounded-full flex items-center justify-center border-4 border-ink-900"
                   style={{ backgroundColor: '#EFE183', boxShadow: '0 8px 16px rgba(0,0,0,0.35)' }}
                 >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#0C1929"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-[34px] h-[34px] lg:w-[44px] lg:h-[44px]"
-                    aria-hidden="true"
-                  >
-                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-                  </svg>
+                  <span className="text-[34px] lg:text-[44px] leading-none" aria-hidden="true" role="img">📖</span>
                 </div>
               </div>
 
