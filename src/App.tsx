@@ -1,7 +1,7 @@
 import './index.css'
 import { useState, useEffect, useRef } from 'react'
 
-const DEFAULT_CTA_URL = 'https://ship.samcart.com/products/self-publishing-studio'
+const DEFAULT_CTA_URL = 'https://ship.samcart.com/products/self-publishing-studio-live'
 
 // Cart closes at midnight ET the night before Session 1 (June 1, 2026)
 const CART_CLOSE_DATE = new Date('2026-06-01T03:59:00Z')
@@ -164,20 +164,6 @@ function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> })
           WebkitMaskImage: 'linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%)',
         }}
       />
-      {/* Diagonal accent line */}
-      <div aria-hidden="true" className="absolute inset-0 pointer-events-none overflow-hidden z-[1]">
-        <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 800">
-          <polyline
-            points="-40,720 420,360 580,480 1480,80"
-            stroke="#B8633A"
-            strokeWidth="28"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            fill="none"
-            opacity="0.28"
-          />
-        </svg>
-      </div>
 
       {/* Top announcement pill */}
       <div className="relative flex justify-center pt-5 md:pt-6 pb-1 px-3 flex-shrink-0 z-10">
@@ -195,7 +181,7 @@ function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> })
           {/* Left — eyebrow + headline + subhead + CTA + countdown */}
           <div className="max-w-[680px]">
             <p className="font-sans font-bold uppercase tracking-caps text-rust-500 mb-4 md:mb-5" style={{ fontSize: 'clamp(11px, 0.95vw, 14px)' }}>
-              Self-Publishing Studio
+              Self-Publishing Studio LIVE
             </p>
             <h1
               className="font-display font-black uppercase text-paper-100 tracking-display mb-5"
@@ -219,7 +205,7 @@ function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> })
               className="block w-full sm:max-w-[520px] text-center bg-butter-500 text-ink-900 font-sans font-bold uppercase tracking-[0.08em] rounded-[3px] shadow-hard hover:bg-butter-400 active:bg-butter-600 transition-colors"
               style={{ padding: '20px 28px', fontSize: 'clamp(13px, 1.1vw, 16px)' }}
             >
-              Join the Self-Publishing Studio
+              Join Self-Publishing Studio LIVE
             </a>
             <p className="font-sans text-[10px] uppercase tracking-caps text-ink-300 mt-5 mb-2.5">Cart closes in</p>
             <CountdownTimer targetDate={CART_CLOSE_DATE} />
@@ -260,7 +246,69 @@ function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> })
 }
 
 /* ═══════════════════════════════════════════════════════════
-   STATS — what's included at a glance
+   WHY WRITE A BOOK — The opportunity, distilled from Cole's essay
+   ═══════════════════════════════════════════════════════════ */
+function WhyWriteABook() {
+  const reasons = [
+    {
+      num: '01',
+      title: 'You love the craft.',
+      body: "Writing a book is the ultimate stress-test for whether you truly understand a topic — and the ultimate vehicle for clarifying your own thinking. It's hard. But it's a fun kind of hard, and one of the only skills that pays a high dividend in long-term fulfillment. The measure of success isn't money. It's completion. “I wrote a book.”",
+    },
+    {
+      num: '02',
+      title: 'You want to be the authority.',
+      body: "A book is the new business card. When you're an “author,” your positioning in your industry goes up — full stop. It doesn't matter whether you got a book deal or self-published. Writing a book takes effort most people aren't willing to put forth, which means simply going through the effort elevates you above everyone else in your niche.",
+    },
+    {
+      num: '03',
+      title: 'You want a business asset.',
+      body: "A great non-fiction book is the entry point to your entire ecosystem. Alex Hormozi's $100M books feed into his private equity company. Cole's Art & Business of Online Writing feeds Ship 30, Write With AI, AI Writing Skool, and Premium Ghostwriting Academy. The book has to be valuable on its own — and when it is, readers naturally ask, “How else can you help me?”",
+    },
+  ]
+
+  return (
+    <section className="bg-paper-100 py-20 md:py-28 px-5 md:px-8">
+      <div className="max-w-container mx-auto">
+        <Eyebrow className="text-rust-500 mb-3">The opportunity</Eyebrow>
+        <Display size="m" className="text-ink-900 mb-5 max-w-[920px]">
+          Why Write A Book?<br />
+          <span className="text-rust-500">And Why Now?</span>
+        </Display>
+        <p className="font-serif text-[18px] md:text-[19px] text-ink-700 leading-[1.55] max-w-[760px] mb-14">
+          There are lots of reasons people are motivated to write a book &mdash; and all of them are correct.
+          But writing a book is hard work, which means you need to be emotionally connected to a <em>reason</em> to
+          go through all the effort. Over the past 10 years, Cole has written 10+ non-fiction books and unlocked
+          radically different outcomes from each one. Here are the three biggest reasons he&rsquo;d encourage you to write yours.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {reasons.map((r) => (
+            <div key={r.num} className="bg-paper-200 border border-paper-300 rounded-[4px] p-7 md:p-8 flex flex-col">
+              <p className="font-display font-black text-[clamp(48px,5vw,72px)] leading-none text-rust-500 mb-4">{r.num}</p>
+              <Display size="s" as="h3" className="text-ink-900 mb-4" style={{ fontSize: 'clamp(22px, 2.4vw, 30px)' }}>{r.title}</Display>
+              <p className="font-serif text-[15px] md:text-[16px] leading-[1.6] text-ink-700">{r.body}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-14 max-w-[820px]">
+          <p className="font-serif italic text-[17px] md:text-[19px] leading-[1.55] text-ink-700 border-l-4 border-rust-500 pl-5">
+            &ldquo;The Art &amp; Business of Online Writing has sold tens of thousands of copies, been translated into Korean,
+            and generated $500,000+ in royalties &mdash; and the ideas in it became the foundation for Ship 30 for 30,
+            which went on to generate millions of dollars in revenue. Category Pirates added another $150K/yr in
+            newsletter subscriptions, $100K/yr in Amazon royalties, and over $2,000,000 in consulting deals on the
+            back of the publishing business.&rdquo;
+          </p>
+          <p className="font-sans text-[12px] font-bold uppercase tracking-caps text-rust-500 mt-4">&mdash; Nicolas Cole</p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ═══════════════════════════════════════════════════════════
+   WHAT IS THE BOOTCAMP — six stat blocks
    ═══════════════════════════════════════════════════════════ */
 function Stats() {
   const stats = [
@@ -275,11 +323,15 @@ function Stats() {
   return (
     <section className="bg-ink-900 py-20 md:py-28 px-5 md:px-8 border-t border-ink-700">
       <div className="max-w-container mx-auto">
-        <Eyebrow className="mb-4">What's inside the studio</Eyebrow>
-        <Display size="m" className="text-paper-100 mb-12 max-w-[920px]">
-          Everything you need to<br />
-          <span className="text-butter-500">go from blank page to published book.</span>
+        <Display size="m" className="text-paper-100 mb-5 max-w-[920px]">
+          What Is<br />
+          <span className="text-butter-500">Self-Publishing Studio LIVE?</span>
         </Display>
+        <p className="font-serif text-[18px] md:text-[19px] text-ink-200 leading-[1.55] max-w-[760px] mb-14">
+          A 2-week live cohort where you go from blank page to a finished, ready-to-publish non-fiction book
+          &mdash; using the exact frameworks Cole has used across 10+ books and $1M+ in self-published royalties.
+          Every session ends with a deliverable. Every deliverable stacks toward a published book.
+        </p>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {stats.map((s) => (
             <div key={s.label} className="bg-ink-800 border border-ink-700 rounded-[4px] p-6 md:p-7">
@@ -301,7 +353,7 @@ function IsThisForYou() {
   const questions = [
     {
       q: "Have you been <em>'writing a book' for years</em> but never actually finished it?",
-      a: "We've all been there — notes in a Google Doc, a half-finished draft you haven't opened in months, and a vague sense the world is missing the book you're meant to write. The Self-Publishing Studio gives you the system, the structure, and the deadlines to finally ship it. Most students draft their first book in weeks, not years.",
+      a: "We've all been there — notes in a Google Doc, a half-finished draft you haven't opened in months, and a vague sense the world is missing the book you're meant to write. Self-Publishing Studio LIVE gives you the system, the structure, and the deadlines to finally ship it. Most students draft their first book in weeks, not years.",
     },
     {
       q: "Do you have <em>the expertise</em> but not the <em>system</em> to turn it into a book?",
@@ -327,7 +379,7 @@ function IsThisForYou() {
     <section className="bg-ink-900 py-20 md:py-28 px-5 md:px-8">
       <div className="max-w-narrow mx-auto">
         <div className="border-l-[6px] border-butter-500 pl-5 mb-10">
-          <Eyebrow className="mb-2">Is the studio right for you?</Eyebrow>
+          <Eyebrow className="mb-2">Is the bootcamp right for you?</Eyebrow>
           <Display size="m" className="text-paper-100">Let's find out.</Display>
         </div>
 
@@ -358,7 +410,7 @@ function IsThisForYou() {
 
         <div className="mt-12 text-center">
           <p className="font-serif text-[18px] italic text-ink-200 mb-6">If any of these sound like you&hellip; this bootcamp was made for you.</p>
-          <PrimaryCTA big>Join the Studio &mdash; $800</PrimaryCTA>
+          <PrimaryCTA big>Join Self-Publishing Studio LIVE</PrimaryCTA>
         </div>
       </div>
     </section>
@@ -437,7 +489,7 @@ function Curriculum() {
             href={DEFAULT_CTA_URL}
             className="inline-block bg-ink-900 text-butter-500 font-sans font-bold uppercase text-[15px] tracking-[0.08em] px-9 py-5 rounded-[3px] hover:bg-ink-800 transition-colors shadow-hard"
           >
-            Join the Studio &mdash; $800
+            Join Self-Publishing Studio LIVE
           </a>
         </div>
       </div>
@@ -452,41 +504,65 @@ function Captains() {
   const captains = [
     {
       name: 'Nicolas Cole',
+      role: 'Lead Instructor',
       handle: '@Nicolascole77',
       img: '/images/sps/cole-headshot.png',
-      bio: "Author of 10+ books including The Art & Business of Online Writing. #1 most-read writer on Quora with 100M+ views. Co-founder of Ship 30 for 30 and Premium Ghostwriting Academy. Generated $1M+ in self-published royalties without a PR firm.",
+      bullets: [
+        'Author of 10+ non-fiction books — including <em>The Art &amp; Business of Online Writing</em>, which has sold tens of thousands of copies, been translated into Korean, and generated <strong>$500,000+ in royalties</strong>.',
+        'Co-founder of Category Pirates: <strong>$150K/yr</strong> newsletter on Substack, <strong>$100K/yr</strong> in Amazon royalties, and <strong>$2M+ in consulting deals</strong> on the back of the publishing business.',
+        'Built <strong>Ship 30 for 30</strong> into a digital writing program with <strong>10,000+ graduates</strong> and millions in revenue — all on the foundation of one self-published book.',
+        '#1 most-read writer on Quora, with <strong>100M+ views</strong>. Has published 4,000+ essays online and ghostwritten for Fortune 500 executives, public CEOs, and 8-figure founders.',
+      ],
     },
     {
       name: 'Dickie Bush',
+      role: 'Co-Captain',
       handle: '@dickiebush',
       img: '/images/sps/dickie-headshot.png',
-      bio: "Founder of Ship 30 for 30 — the fastest-growing cohort-based writing program on the internet with 10,000+ graduates. Former BlackRock trader turned digital entrepreneur. Built a $20M/year writing business from a daily tweet.",
+      bullets: [
+        "Founder of Ship 30 for 30 — the fastest-growing cohort-based writing program on the internet with 10,000+ graduates.",
+        "Former BlackRock trader turned digital entrepreneur. Built a $20M/year writing business from a daily tweet.",
+      ],
     },
   ]
 
   return (
     <section id="captains" className="bg-paper-100 py-20 md:py-28 px-5 md:px-8">
       <div className="max-w-container mx-auto">
-        <Eyebrow className="text-rust-500 mb-3">Ahoy from your captains</Eyebrow>
-        <Display size="m" className="text-ink-900 max-w-[920px] mb-14">
-          We've written<br />
-          <span className="text-rust-500">14 books between us.</span>
+        <Eyebrow className="text-rust-500 mb-3">Your instructors</Eyebrow>
+        <Display size="m" className="text-ink-900 max-w-[1000px] mb-5">
+          Learn from the writer who&rsquo;s<br />
+          <span className="text-rust-500">done this 10+ times.</span>
         </Display>
-        <div className="grid md:grid-cols-2 gap-5">
+        <p className="font-serif text-[18px] md:text-[19px] text-ink-700 leading-[1.55] max-w-[760px] mb-14">
+          You don&rsquo;t need a theory class. You need the system from someone who&rsquo;s already published the books,
+          banked the royalties, and built the business on the back of them.
+        </p>
+        <div className="grid md:grid-cols-[1.5fr_1fr] gap-5">
           {captains.map((c) => (
-            <div key={c.name} className="bg-paper-200 border border-paper-300 rounded-[4px] p-8 flex flex-col gap-5">
+            <div key={c.name} className="bg-paper-200 border border-paper-300 rounded-[4px] p-7 md:p-9 flex flex-col gap-5">
               <div className="flex items-center gap-5">
-                <div className="w-[80px] h-[80px] rounded-full overflow-hidden flex-shrink-0 border-2 border-ink-900">
+                <div className="w-[88px] h-[88px] rounded-full overflow-hidden flex-shrink-0 border-2 border-ink-900">
                   <img src={c.img} alt={c.name} className="w-full h-full object-cover object-top" />
                 </div>
                 <div>
                   <Display size="s" className="text-ink-900">{c.name}</Display>
-                  <p className="font-sans font-semibold text-[13px] tracking-caps-lg text-rust-500 mt-1.5">
-                    🐦 {c.handle}
+                  <p className="font-sans font-bold text-[11px] tracking-caps uppercase text-rust-500 mt-2">
+                    {c.role} &middot; 🐦 {c.handle}
                   </p>
                 </div>
               </div>
-              <p className="font-serif text-[16px] leading-[1.55] text-ink-700">{c.bio}</p>
+              <ul className="flex flex-col gap-3.5">
+                {c.bullets.map((b, i) => (
+                  <li key={i} className="flex gap-3">
+                    <span className="text-rust-500 mt-1 flex-shrink-0">→</span>
+                    <span
+                      className="font-serif text-[15px] md:text-[16px] leading-[1.55] text-ink-700 [&_em]:italic [&_strong]:font-bold [&_strong]:text-ink-900"
+                      dangerouslySetInnerHTML={{ __html: b }}
+                    />
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
@@ -583,14 +659,12 @@ function Bonuses() {
   return (
     <section id="bonuses" className="bg-ink-800 py-20 md:py-28 px-5 md:px-8">
       <div className="max-w-container mx-auto">
-        <Eyebrow className="mb-4">Free bonuses included</Eyebrow>
-        <Display size="m" className="text-butter-500 max-w-[920px] mb-4">
-          Three bonuses to crush<br />
-          <span className="text-paper-100">your biggest objections.</span>
+        <Display size="m" className="text-butter-500 max-w-[920px] mb-5">
+          Free Bonuses<br />
+          <span className="text-paper-100">Included.</span>
         </Display>
         <p className="font-serif text-[18px] text-ink-200 mb-14 max-w-[760px]">
-          Over <strong className="text-paper-100">$2,491 in free bonuses</strong> included
-          with the live bootcamp &mdash; built to handle the three questions every would-be author asks.
+          Everything you need to go from blank page to published book.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {bonuses.map((b) => (
@@ -626,7 +700,7 @@ function AIWritingSkool() {
   return (
     <section className="bg-ink-900 py-20 md:py-28 px-5 md:px-8">
       <div className="max-w-container mx-auto">
-        <Eyebrow className="mb-4">Included free with the studio</Eyebrow>
+        <Eyebrow className="mb-4">Included free with the bootcamp</Eyebrow>
         <Display size="m" className="text-paper-100 mb-4">
           30-Day Trial to<br /><span className="text-butter-500">AI Writing Skool.</span>
         </Display>
@@ -675,7 +749,7 @@ function Pricing() {
     { name: '6 x 60-Minute Live Sessions', price: '$3,600' },
     { name: '6 AI-Powered Writing Assets', price: '$600' },
     { name: 'Session Replays', price: '$300' },
-    { name: 'Lifetime Access to the Studio', price: 'Priceless' },
+    { name: 'Lifetime Access to the Curriculum', price: 'Priceless' },
     { name: 'Mini-Course #1: Manuscript OS', price: '$1,500' },
     { name: 'Mini-Course #2: Self-Publishing Empire', price: '$1,500' },
     { name: 'Mini-Course #3: Book Launch Blueprint', price: '$1,500' },
@@ -688,10 +762,10 @@ function Pricing() {
   return (
     <section className="bg-ink-800 py-24 md:py-32 px-5 md:px-8">
       <div className="max-w-narrow mx-auto text-center">
-        <Eyebrow className="mb-4">Join the bootcamp</Eyebrow>
-        <Display size="l" className="text-butter-500 mb-12">
-          Proven frameworks.<br />
-          <span className="text-paper-100">Everything you need.</span>
+        <Eyebrow className="mb-4">Join The Bootcamp</Eyebrow>
+        <Display size="m" className="text-paper-100 mb-12">
+          Want To Write Your First<br />
+          <span className="text-butter-500">(Or Next) Non-Fiction Book<br />In 14 Days?</span>
         </Display>
 
         <div className="max-w-[560px] mx-auto rounded-[4px] overflow-hidden shadow-hard-lg">
@@ -718,7 +792,7 @@ function Pricing() {
               className="inline-block bg-ink-900 text-butter-500 font-sans font-bold uppercase text-[15px] tracking-[0.08em] px-9 py-5 rounded-[3px] mt-6 hover:bg-ink-800 transition-colors"
               style={{ boxShadow: '8px 8px 0 rgba(8,17,31,0.35)' }}
             >
-              Join the Studio &rarr;
+              Join Self-Publishing Studio LIVE &rarr;
             </a>
             <p className="font-sans text-[12px] text-ink-900/70 mt-4">7-day money-back guarantee</p>
           </div>
@@ -754,7 +828,7 @@ function GuaranteeFinalCTA() {
             className="inline-block bg-ink-900 text-butter-500 font-sans font-bold uppercase text-[17px] tracking-[0.08em] px-10 py-5 rounded-[3px] hover:bg-ink-800 transition-colors"
             style={{ boxShadow: '8px 8px 0 rgba(8,17,31,0.35)' }}
           >
-            Join the Studio &mdash; $800
+            Join Self-Publishing Studio LIVE
           </a>
           <p className="font-sans text-[14px] text-ink-900/70 mt-5">
             Live bootcamp begins Monday, June 1, 2026.
@@ -778,7 +852,7 @@ function FAQ() {
     { q: "Will my book actually make money?", a: "Most self-published books don't — because most authors treat the book as the product. We teach you to treat your book as the front door to your business. A $10 book that generates a $500/month client is worth $6,000/year, not $4 in royalties. The book is the funnel. The Book Monetization Mastery bonus covers this in detail." },
     { q: "I've tried writing a book before and didn't finish. How is this different?", a: "Our system has built-in completion mechanics: live deadlines, milestones, accountability checkpoints, and a peer community. The bootcamp structure forces you to ship. Most graduates finish their first draft within weeks." },
     { q: "How long do I have access?", a: "Lifetime. Every replay, slide deck, template, prompt, and bonus is yours forever. Including every update we ship to the curriculum." },
-    { q: "How is this different from Ship 30 for 30?", a: "Ship 30 teaches you to write online — daily essays, 250 words at a time. The Self-Publishing Studio teaches you to assemble that practice into a full non-fiction book and turn it into a business asset." },
+    { q: "How is this different from Ship 30 for 30?", a: "Ship 30 teaches you to write online — daily essays, 250 words at a time. Self-Publishing Studio LIVE teaches you to assemble that practice into a full non-fiction book and turn it into a business asset." },
     { q: "Is there a guarantee?", a: "Yes. Show up to Session 1, do the work, and if it isn't what you expected — email us within 7 days and we'll refund you in full. No questions asked." },
   ]
 
@@ -862,7 +936,7 @@ function StickyCtaBar({ heroCtaRef }: { heroCtaRef: React.RefObject<HTMLAnchorEl
       <div className="max-w-container mx-auto px-5 h-[64px] flex items-center justify-between gap-4">
         <span className="hidden md:flex items-center gap-3 font-display font-black text-[16px] text-butter-500 uppercase tracking-caps-lg">
           <img src="/images/sps/bookshelf-mark.svg" alt="" className="w-6 h-6" />
-          Self-Publishing Studio
+          Self-Publishing Studio LIVE
         </span>
         <div className="hidden md:block">
           <CountdownTimer targetDate={CART_CLOSE_DATE} compact />
@@ -871,7 +945,7 @@ function StickyCtaBar({ heroCtaRef }: { heroCtaRef: React.RefObject<HTMLAnchorEl
           href={DEFAULT_CTA_URL}
           className="bg-butter-500 text-ink-900 font-sans font-bold uppercase text-[13px] tracking-caps px-6 py-2.5 rounded-[3px] hover:bg-butter-400 transition-colors mx-auto md:mx-0"
         >
-          Join Now &mdash; $800
+          Join SPS LIVE &mdash; $800
         </a>
       </div>
     </div>
@@ -887,6 +961,7 @@ export default function App() {
   return (
     <main className="min-h-screen bg-ink-900">
       <Hero ctaRef={heroCtaRef} />
+      <FadeIn><WhyWriteABook /></FadeIn>
       <FadeIn><Stats /></FadeIn>
       <FadeIn><Captains /></FadeIn>
       <FadeIn><IsThisForYou /></FadeIn>
