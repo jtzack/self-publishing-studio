@@ -196,8 +196,8 @@ function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> })
               className="font-serif text-paper-200 mb-6 max-w-[560px]"
               style={{ fontSize: 'clamp(15px, 1.3vw, 19px)', lineHeight: 1.5 }}
             >
-              Write, publish, and market a book that builds your business. Finally position yourself
-              as an authority in your niche and claim your author badge.
+              Write, publish, and market a book that builds your business and finally position yourself
+              as an authority in your niche.
             </p>
             <a
               ref={ctaRef}
@@ -211,31 +211,41 @@ function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> })
             <CountdownTimer targetDate={CART_CLOSE_DATE} />
           </div>
 
-          {/* Right — overlapping captain circles */}
+          {/* Right — overlapping captain circles + book-icon accent */}
           <div className="hidden md:flex justify-center md:justify-end items-center">
-            <div className="relative w-[360px] h-[440px] lg:w-[420px] lg:h-[480px]">
-              {/* Nicolas Cole — top-left, butter bg */}
-              <div className="absolute left-0 top-0 z-10 flex flex-col items-center">
+            <div className="relative w-[380px] h-[460px] lg:w-[440px] lg:h-[500px]">
+              {/* Small book-icon decoration — upper-left, butter background */}
+              <div className="absolute left-[40px] top-[10px] z-30">
                 <div
-                  className="w-[180px] h-[180px] lg:w-[210px] lg:h-[210px] rounded-full overflow-hidden border-4 border-ink-900"
+                  className="w-[78px] h-[78px] lg:w-[88px] lg:h-[88px] rounded-full flex items-center justify-center border-4 border-ink-900"
                   style={{ backgroundColor: '#EFE183' }}
                 >
-                  <img src="/images/sps/cole-circle.png" alt="Nicolas Cole" className="w-full h-full object-cover object-top" />
+                  <img src="/images/sps/bookshelf-mark.svg" alt="" className="w-[44px] h-[44px] lg:w-[52px] lg:h-[52px]" />
                 </div>
-                <p className="font-display font-black uppercase text-paper-100 mt-3 text-[18px] tracking-caps-lg">Nicolas Cole</p>
-                <p className="font-sans text-[10px] font-bold uppercase tracking-caps text-ink-300 mt-1 text-center">Co-Founder,<br />Premium Ghostwriting Academy</p>
               </div>
 
-              {/* Dickie Bush — bottom-right, rust bg */}
-              <div className="absolute right-0 bottom-0 z-20 flex flex-col items-center">
+              {/* Dickie Bush — top-right, rust bg */}
+              <div className="absolute right-0 top-0 z-20 flex flex-col items-center">
                 <div
-                  className="w-[180px] h-[180px] lg:w-[210px] lg:h-[210px] rounded-full overflow-hidden border-4 border-ink-900"
+                  className="w-[170px] h-[170px] lg:w-[200px] lg:h-[200px] rounded-full overflow-hidden border-4 border-ink-900"
                   style={{ backgroundColor: '#B8633A' }}
                 >
                   <img src="/images/sps/dickie-circle.png" alt="Dickie Bush" className="w-full h-full object-cover object-top" />
                 </div>
                 <p className="font-display font-black uppercase text-paper-100 mt-3 text-[18px] tracking-caps-lg">Dickie Bush</p>
                 <p className="font-sans text-[10px] font-bold uppercase tracking-caps text-ink-300 mt-1 text-center">Co-Founder,<br />Ship 30 for 30</p>
+              </div>
+
+              {/* Nicolas Cole — bottom-left, navy bg */}
+              <div className="absolute left-0 bottom-0 z-10 flex flex-col items-center">
+                <div
+                  className="w-[200px] h-[200px] lg:w-[230px] lg:h-[230px] rounded-full overflow-hidden border-4 border-ink-900"
+                  style={{ backgroundColor: '#1E3550' }}
+                >
+                  <img src="/images/sps/cole-circle.png" alt="Nicolas Cole" className="w-full h-full object-cover object-top" />
+                </div>
+                <p className="font-display font-black uppercase text-paper-100 mt-3 text-[18px] tracking-caps-lg">Nicolas Cole</p>
+                <p className="font-sans text-[10px] font-bold uppercase tracking-caps text-ink-300 mt-1 text-center">Co-Founder,<br />Premium Ghostwriting Academy</p>
               </div>
             </div>
           </div>
@@ -291,38 +301,63 @@ function WhyWriteABook() {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   WHAT IS THE BOOTCAMP — six stat blocks
+   WHAT IS THE BOOTCAMP — Product box + six stat cards
    ═══════════════════════════════════════════════════════════ */
 function Stats() {
   const stats = [
-    { num: '6', label: 'Live Sessions', desc: 'Three per week. 60 min each. Hands-on with Cole.' },
+    { num: '6', label: 'Live Sessions', desc: '3 per week over 2 weeks. 60 min each. 3:00 PM ET.' },
+    { num: '14', label: 'Days To Finish Your Book', desc: 'From blank page to a finished, ready-to-publish manuscript.' },
     { num: '6', label: 'AI Writing Assets', desc: 'Plug-and-play prompts and templates for every step.' },
-    { num: '3', label: 'Mini-Courses', desc: 'Manuscript OS, Self-Publishing Empire, and Book Launch Blueprint.' },
+    { num: '3', label: 'Mini-Courses', desc: 'Manuscript OS, Self-Publishing Empire, Book Launch Blueprint.' },
     { num: '3', label: 'Fast-Action Bonuses', desc: 'Indie vs Traditional, AI Author Autopilot, Book Monetization Mastery.' },
-    { num: '∞', label: 'Lifetime Access', desc: 'Replays, slides, prompts, and bonuses. Forever.' },
-    { num: '30', label: 'Days AI Writing Skool', desc: 'Free trial to our community of writers building in the AI age.' },
+    { num: '2', label: 'World-Class Instructors', desc: 'Nicolas Cole & Dickie Bush — authors and digital publishers.' },
   ]
 
   return (
     <section className="bg-ink-900 py-20 md:py-28 px-5 md:px-8 border-t border-ink-700">
       <div className="max-w-container mx-auto">
-        <Display size="m" className="text-paper-100 mb-5 max-w-[920px]">
-          What Is<br />
-          <span className="text-butter-500">Self-Publishing Studio LIVE?</span>
-        </Display>
-        <p className="font-serif text-[18px] md:text-[19px] text-ink-200 leading-[1.55] max-w-[760px] mb-14">
-          A 2-week live cohort where you go from blank page to a finished, ready-to-publish non-fiction book
-          &mdash; using the exact frameworks Cole has used across 10+ books and $1M+ in self-published royalties.
-          Every session ends with a deliverable. Every deliverable stacks toward a published book.
-        </p>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {stats.map((s) => (
-            <div key={s.label} className="bg-ink-800 border border-ink-700 rounded-[4px] p-6 md:p-7">
-              <Display size="m" className="text-butter-500 mb-2">{s.num}</Display>
-              <p className="font-sans text-[13px] font-bold uppercase tracking-caps text-paper-100 mb-2">{s.label}</p>
-              <p className="font-serif text-[15px] leading-[1.55] text-ink-200">{s.desc}</p>
-            </div>
-          ))}
+        {/* Centered headline with small rust accent line */}
+        <div className="flex flex-col items-center mb-14">
+          <div className="w-16 h-[3px] bg-rust-500 mb-7" />
+          <Display size="m" className="text-paper-100 text-center" style={{ fontSize: 'clamp(28px, 4.2vw, 56px)' }}>
+            What Is Self-Publishing<br />
+            <span className="text-butter-500">Studio LIVE?</span>
+          </Display>
+        </div>
+
+        {/* Two-column: product box left, 2x3 stat grid right */}
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-10 md:gap-14 items-center">
+          {/* Left — product box */}
+          <div className="flex justify-center">
+            <img
+              src="/images/sps/product-box-sps.png"
+              alt="Self-Publishing Studio LIVE"
+              className="w-full max-w-[420px] drop-shadow-[20px_30px_40px_rgba(0,0,0,0.6)]"
+              loading="lazy"
+            />
+          </div>
+
+          {/* Right — 2x3 stat cards */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+            {stats.map((s) => (
+              <div key={s.label} className="bg-ink-800 border border-ink-700 rounded-[4px] p-5 md:p-6 flex flex-col">
+                <p className="font-display font-black text-rust-500 leading-none mb-3" style={{ fontSize: 'clamp(36px, 3.8vw, 52px)' }}>{s.num}</p>
+                <p className="font-sans text-[12px] font-bold uppercase tracking-caps text-paper-100 mb-2 leading-tight">{s.label}</p>
+                <p className="font-serif text-[13px] md:text-[14px] leading-[1.5] text-ink-200">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Centered CTA below */}
+        <div className="mt-14 text-center">
+          <a
+            href={DEFAULT_CTA_URL}
+            className="inline-block bg-butter-500 text-ink-900 font-sans font-bold uppercase tracking-[0.08em] rounded-[3px] shadow-hard hover:bg-butter-400 transition-colors"
+            style={{ padding: '20px 36px', fontSize: 'clamp(13px, 1vw, 15px)' }}
+          >
+            Join Self-Publishing Studio LIVE
+          </a>
         </div>
       </div>
     </section>
@@ -340,7 +375,7 @@ function IsThisForYou() {
     },
     {
       q: "Do you have <em>the expertise</em> but not the <em>system</em> to turn it into a book?",
-      a: "You know your subject cold. What you don't know is how to organize it into chapters, how to outline a non-fiction book that actually sells, how to publish on Amazon, and how to market it after launch. This studio gives you the exact framework Cole has used across 10+ books and $1,000,000+ in royalties.",
+      a: "You know your subject cold. What you don't know is how to organize it into chapters, how to outline a non-fiction book that actually sells, how to publish on Amazon, and how to market it after launch. This studio gives you the exact framework Cole has used across 10+ books and $500,000+ in royalties.",
     },
     {
       q: "Do you want a book that <em>builds your business</em> — not just sits on a shelf?",
@@ -410,7 +445,7 @@ function Curriculum() {
     { num: 3, date: 'Fri Jun 5', title: 'Outlining Your Book', desc: "Reverse-engineer a bulletproof outline from your reader's questions. Walk away with a complete skeleton you can draft against.", asset: 'Book Outline Crafter' },
     { num: 4, date: 'Mon Jun 8', title: 'Outlining Each Chapter', desc: 'The chapter-level framework Cole has used across 10+ books. Clear, valuable, and actually enjoyable to read.', asset: 'The Perfect Book Chapter Template' },
     { num: 5, date: 'Wed Jun 10', title: 'Book Writing Fundamentals', desc: 'How to draft without getting stuck. Use AI to accelerate the heavy lifting while keeping every page recognizably yours.', asset: 'Book Chapter Autowriter' },
-    { num: 6, date: 'Fri Jun 12', title: 'Book Launch Blueprint', desc: "The evergreen marketing strategy that's generated $1M+ in royalties — without a PR firm, podcast tour, or massive budget.", asset: 'Book Launch Checklist' },
+    { num: 6, date: 'Fri Jun 12', title: 'Book Launch Blueprint', desc: "The evergreen marketing strategy that's generated $500K+ in royalties — without a PR firm, podcast tour, or massive budget.", asset: 'Book Launch Checklist' },
   ]
 
   return (
@@ -489,7 +524,7 @@ function Captains() {
       name: 'Nicolas Cole',
       role: 'Co-Founder, Ship 30 for 30 & Premium Ghostwriting Academy',
       img: '/images/sps/cole-headshot.png',
-      bio: 'Author of 10+ non-fiction books, including The Art & Business of Online Writing. #1 most-read writer on Quora with 100M+ views. Co-founder of Ship 30 for 30 and Premium Ghostwriting Academy. Generated $1,000,000+ in self-published royalties on the back of his books.',
+      bio: 'Author of 10+ non-fiction books, including The Art & Business of Online Writing. #1 most-read writer on Quora with 100M+ views. Co-founder of Ship 30 for 30 and Premium Ghostwriting Academy. Generated $500,000+ in self-published royalties on the back of his books.',
     },
     {
       name: 'Dickie Bush',
@@ -501,7 +536,7 @@ function Captains() {
 
   const stats = [
     '10+ Published Books',
-    '$1,000,000+ In Royalties',
+    '$500,000+ In Royalties',
     '10,000+ Students Taught',
     '$20M+ In Digital Products',
   ]
@@ -572,7 +607,7 @@ function MiniCourses() {
       eyebrow: 'Mini-Course #3',
       title: 'Book Launch Blueprint',
       value: '$1,500 Value',
-      desc: 'The evergreen marketing strategy used to sell tens of thousands of books and generate over $1,000,000 in self-published royalties — without a PR firm, a podcast tour, or a massive launch budget.',
+      desc: 'The evergreen marketing strategy used to sell tens of thousands of books and generate over $500,000 in self-published royalties — without a PR firm, a podcast tour, or a massive launch budget.',
     },
   ]
 
@@ -585,7 +620,7 @@ function MiniCourses() {
         </Display>
         <p className="font-serif text-[18px] text-ink-200 mb-14 max-w-[720px]">
           Three complete mini-courses delivered alongside the live bootcamp. Buy once, study forever.
-          The same frameworks used across 10+ books and over $1,000,000 in royalties.
+          The same frameworks used across 10+ books and over $500,000 in royalties.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {courses.map((c) => (
@@ -636,13 +671,11 @@ function Bonuses() {
   return (
     <section id="bonuses" className="bg-ink-800 py-20 md:py-28 px-5 md:px-8">
       <div className="max-w-container mx-auto">
-        <Display size="m" className="text-butter-500 max-w-[920px] mb-5">
-          Free Bonuses<br />
-          <span className="text-paper-100">Included.</span>
+        <Eyebrow className="mb-4">Free Bonuses Included</Eyebrow>
+        <Display size="m" className="text-paper-100 max-w-[1000px] mb-14">
+          Everything you need to go from<br />
+          <span className="text-butter-500">blank page to published book.</span>
         </Display>
-        <p className="font-serif text-[18px] text-ink-200 mb-14 max-w-[760px]">
-          Everything you need to go from blank page to published book.
-        </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {bonuses.map((b) => (
             <div key={b.num} className="bg-ink-900 border border-ink-700 rounded-[4px] p-7 flex flex-col gap-4">
