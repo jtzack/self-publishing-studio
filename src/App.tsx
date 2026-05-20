@@ -662,8 +662,8 @@ function Bonuses() {
       <div className="max-w-container mx-auto">
         <Eyebrow className="mb-4">Free Bonuses Included</Eyebrow>
         <Display size="m" className="text-paper-100 max-w-[1000px] mb-14">
-          Everything you need to go from<br />
-          <span className="text-butter-500">blank page to published book.</span>
+          Finally claim your badge<br />
+          <span className="text-butter-500">of being an author.</span>
         </Display>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {bonuses.map((b) => (
