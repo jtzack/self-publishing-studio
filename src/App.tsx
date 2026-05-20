@@ -144,7 +144,7 @@ function CountdownTimer({ targetDate, compact, onLight }: { targetDate: Date; co
 }
 
 /* ═══════════════════════════════════════════════════════════
-   HERO — Book pattern + Barlow display + product render
+   HERO — Two-tone headline left, overlapping captain circles right
    Designed to fit within one viewport at 1366×768, 1440×900, 1920×1080.
    ═══════════════════════════════════════════════════════════ */
 function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> }) {
@@ -159,15 +159,29 @@ function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> })
           backgroundSize: '600px',
           backgroundRepeat: 'repeat',
           backgroundPosition: 'center',
-          opacity: 0.4,
-          maskImage: 'linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.15) 100%)',
-          WebkitMaskImage: 'linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.15) 100%)',
+          opacity: 0.35,
+          maskImage: 'linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%)',
+          WebkitMaskImage: 'linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%)',
         }}
       />
+      {/* Diagonal accent line */}
+      <div aria-hidden="true" className="absolute inset-0 pointer-events-none overflow-hidden z-[1]">
+        <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 800">
+          <polyline
+            points="-40,720 420,360 580,480 1480,80"
+            stroke="#B8633A"
+            strokeWidth="28"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            fill="none"
+            opacity="0.28"
+          />
+        </svg>
+      </div>
 
       {/* Top announcement pill */}
-      <div className="relative flex justify-center pt-5 md:pt-6 pb-2 px-3 flex-shrink-0">
-        <div className="inline-flex items-center gap-2 border border-ink-600 rounded-full px-4 md:px-5 py-1.5">
+      <div className="relative flex justify-center pt-5 md:pt-6 pb-1 px-3 flex-shrink-0 z-10">
+        <div className="inline-flex items-center gap-2 border border-ink-600 rounded-full px-4 md:px-5 py-1.5 bg-ink-900/60">
           <span className="w-2 h-2 rounded-full bg-butter-500 animate-pulse flex-shrink-0" />
           <span className="font-sans text-[10px] md:text-[11px] text-paper-200 uppercase tracking-caps whitespace-nowrap">
             Live Bootcamp Begins Monday, June 1, 2026
@@ -175,40 +189,69 @@ function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> })
         </div>
       </div>
 
-      {/* Main content — fills remaining viewport, centered */}
-      <div className="relative flex-1 flex items-center w-full">
-        <div className="max-w-container mx-auto w-full px-5 md:px-8 py-8 md:py-10 grid md:grid-cols-[55fr_45fr] gap-8 md:gap-10 lg:gap-14 items-center">
-          {/* Left — text column */}
-          <div className="max-w-[640px]">
+      {/* Main content — fills remaining viewport */}
+      <div className="relative flex-1 flex items-center w-full z-10">
+        <div className="max-w-container mx-auto w-full px-5 md:px-8 py-6 md:py-8 grid md:grid-cols-[1.4fr_1fr] gap-8 md:gap-10 lg:gap-14 items-center">
+          {/* Left — eyebrow + headline + subhead + CTA + countdown */}
+          <div className="max-w-[680px]">
+            <p className="font-sans font-bold uppercase tracking-caps text-rust-500 mb-4 md:mb-5" style={{ fontSize: 'clamp(11px, 0.95vw, 14px)' }}>
+              Self-Publishing Studio
+            </p>
             <h1
-              className="font-display font-black uppercase text-butter-500 tracking-display mb-5"
-              style={{ fontSize: 'clamp(36px, 5.5vw, 84px)', lineHeight: 1.0 }}
+              className="font-display font-black uppercase text-paper-100 tracking-display mb-5"
+              style={{ fontSize: 'clamp(30px, 4.8vw, 72px)', lineHeight: 0.98 }}
             >
-              Write,<br />publish,<br />and sell<br />your book.
+              How To Write Your<br />
+              First (Or Next)<br />
+              <span className="text-butter-500">Non-Fiction Book</span><br />
+              In 14 Days
             </h1>
             <p
-              className="font-serif text-paper-200 mb-7"
-              style={{ fontSize: 'clamp(15px, 1.35vw, 19px)', lineHeight: 1.5 }}
+              className="font-serif text-paper-200 mb-6 max-w-[560px]"
+              style={{ fontSize: 'clamp(15px, 1.3vw, 19px)', lineHeight: 1.5 }}
             >
-              The complete system for writing, publishing, and marketing a non-fiction
-              book that builds your business &mdash; in <em>weeks</em>, not years.
+              Write, publish, and market a book that builds your business. Finally position yourself
+              as an authority in your niche and claim your author badge.
             </p>
-            <div className="flex flex-wrap gap-3 items-center mb-6">
-              <PrimaryCTA big onRef={ctaRef}>
-                Join the Studio &mdash; $800
-              </PrimaryCTA>
-            </div>
-            <p className="font-sans text-[10px] uppercase tracking-caps text-ink-300 mb-2.5">Cart closes in</p>
+            <a
+              ref={ctaRef}
+              href={DEFAULT_CTA_URL}
+              className="block w-full sm:max-w-[520px] text-center bg-butter-500 text-ink-900 font-sans font-bold uppercase tracking-[0.08em] rounded-[3px] shadow-hard hover:bg-butter-400 active:bg-butter-600 transition-colors"
+              style={{ padding: '20px 28px', fontSize: 'clamp(13px, 1.1vw, 16px)' }}
+            >
+              Join the Self-Publishing Studio
+            </a>
+            <p className="font-sans text-[10px] uppercase tracking-caps text-ink-300 mt-5 mb-2.5">Cart closes in</p>
             <CountdownTimer targetDate={CART_CLOSE_DATE} />
           </div>
 
-          {/* Right — product box render */}
-          <div className="flex justify-center md:justify-end items-center">
-            <img
-              src="/images/sps/product-box-sps.png"
-              alt="Self-Publishing Studio"
-              className="w-full max-w-[280px] sm:max-w-[320px] md:max-w-[340px] lg:max-w-[380px] drop-shadow-[20px_30px_40px_rgba(0,0,0,0.6)]"
-            />
+          {/* Right — overlapping captain circles */}
+          <div className="hidden md:flex justify-center md:justify-end items-center">
+            <div className="relative w-[360px] h-[440px] lg:w-[420px] lg:h-[480px]">
+              {/* Nicolas Cole — top-left, butter bg */}
+              <div className="absolute left-0 top-0 z-10 flex flex-col items-center">
+                <div
+                  className="w-[180px] h-[180px] lg:w-[210px] lg:h-[210px] rounded-full overflow-hidden border-4 border-ink-900"
+                  style={{ backgroundColor: '#EFE183' }}
+                >
+                  <img src="/images/sps/cole-circle.png" alt="Nicolas Cole" className="w-full h-full object-cover object-top" />
+                </div>
+                <p className="font-display font-black uppercase text-paper-100 mt-3 text-[18px] tracking-caps-lg">Nicolas Cole</p>
+                <p className="font-sans text-[10px] font-bold uppercase tracking-caps text-ink-300 mt-1 text-center">Co-Founder,<br />Premium Ghostwriting Academy</p>
+              </div>
+
+              {/* Dickie Bush — bottom-right, rust bg */}
+              <div className="absolute right-0 bottom-0 z-20 flex flex-col items-center">
+                <div
+                  className="w-[180px] h-[180px] lg:w-[210px] lg:h-[210px] rounded-full overflow-hidden border-4 border-ink-900"
+                  style={{ backgroundColor: '#B8633A' }}
+                >
+                  <img src="/images/sps/dickie-circle.png" alt="Dickie Bush" className="w-full h-full object-cover object-top" />
+                </div>
+                <p className="font-display font-black uppercase text-paper-100 mt-3 text-[18px] tracking-caps-lg">Dickie Bush</p>
+                <p className="font-sans text-[10px] font-bold uppercase tracking-caps text-ink-300 mt-1 text-center">Co-Founder,<br />Ship 30 for 30</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -410,13 +453,13 @@ function Captains() {
     {
       name: 'Nicolas Cole',
       handle: '@Nicolascole77',
-      initials: 'NC',
+      img: '/images/sps/cole-headshot.png',
       bio: "Author of 10+ books including The Art & Business of Online Writing. #1 most-read writer on Quora with 100M+ views. Co-founder of Ship 30 for 30 and Premium Ghostwriting Academy. Generated $1M+ in self-published royalties without a PR firm.",
     },
     {
       name: 'Dickie Bush',
       handle: '@dickiebush',
-      initials: 'DB',
+      img: '/images/sps/dickie-headshot.png',
       bio: "Founder of Ship 30 for 30 — the fastest-growing cohort-based writing program on the internet with 10,000+ graduates. Former BlackRock trader turned digital entrepreneur. Built a $20M/year writing business from a daily tweet.",
     },
   ]
@@ -433,8 +476,8 @@ function Captains() {
           {captains.map((c) => (
             <div key={c.name} className="bg-paper-200 border border-paper-300 rounded-[4px] p-8 flex flex-col gap-5">
               <div className="flex items-center gap-5">
-                <div className="w-[72px] h-[72px] rounded-full bg-ink-900 text-butter-500 flex items-center justify-center font-display font-black text-[28px] tracking-caps-lg flex-shrink-0">
-                  {c.initials}
+                <div className="w-[80px] h-[80px] rounded-full overflow-hidden flex-shrink-0 border-2 border-ink-900">
+                  <img src={c.img} alt={c.name} className="w-full h-full object-cover object-top" />
                 </div>
                 <div>
                   <Display size="s" className="text-ink-900">{c.name}</Display>
