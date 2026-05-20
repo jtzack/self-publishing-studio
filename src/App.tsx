@@ -213,12 +213,12 @@ function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> })
 
           {/* Right — overlapping captain circles */}
           <div className="hidden md:flex justify-center md:justify-end items-center">
-            <div className="relative w-[380px] h-[460px] lg:w-[440px] lg:h-[500px]">
-              {/* Dickie Bush — top-right, navy bg */}
-              <div className="absolute right-0 top-0 z-20 flex flex-col items-center">
+            <div className="relative w-[380px] h-[420px] lg:w-[440px] lg:h-[440px]">
+              {/* Dickie Bush — top-right, forest bg, behind */}
+              <div className="absolute right-0 top-0 z-10 flex flex-col items-center">
                 <div
-                  className="w-[170px] h-[170px] lg:w-[200px] lg:h-[200px] rounded-full overflow-hidden border-4 border-ink-900"
-                  style={{ backgroundColor: '#1E3550' }}
+                  className="w-[200px] h-[200px] lg:w-[220px] lg:h-[220px] rounded-full overflow-hidden border-4 border-ink-900"
+                  style={{ backgroundColor: '#4A7C59' }}
                 >
                   <img src="/images/sps/dickie-circle.png" alt="Dickie Bush" className="w-full h-full object-cover object-top" />
                 </div>
@@ -226,10 +226,10 @@ function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> })
                 <p className="font-sans text-[10px] font-bold uppercase tracking-caps text-ink-300 mt-1 text-center">Co-Founder,<br />Ship 30 for 30</p>
               </div>
 
-              {/* Nicolas Cole — bottom-left, rust bg */}
-              <div className="absolute left-0 bottom-0 z-10 flex flex-col items-center">
+              {/* Nicolas Cole — bottom-left, rust bg, in front (overlaps Dickie) */}
+              <div className="absolute left-0 bottom-0 z-20 flex flex-col items-center">
                 <div
-                  className="w-[200px] h-[200px] lg:w-[230px] lg:h-[230px] rounded-full overflow-hidden border-4 border-ink-900"
+                  className="w-[240px] h-[240px] lg:w-[270px] lg:h-[270px] rounded-full overflow-hidden border-4 border-ink-900"
                   style={{ backgroundColor: '#B8633A' }}
                 >
                   <img src="/images/sps/cole-circle.png" alt="Nicolas Cole" className="w-full h-full object-cover object-top" />
