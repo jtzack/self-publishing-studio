@@ -177,7 +177,7 @@ function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> })
 
       {/* Main content — fills remaining viewport */}
       <div className="relative flex-1 flex items-center w-full z-10">
-        <div className="max-w-container mx-auto w-full px-5 md:px-8 py-6 md:py-8 grid md:grid-cols-[1.4fr_1fr] gap-8 md:gap-10 lg:gap-14 items-center">
+        <div className="max-w-container mx-auto w-full px-5 md:px-8 py-6 md:py-8 grid lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-14 items-center">
           {/* Left — eyebrow + headline + subhead + CTA + countdown */}
           <div className="max-w-[680px]">
             <p className="font-sans font-bold uppercase tracking-caps text-butter-500 mb-4 md:mb-5" style={{ fontSize: 'clamp(11px, 0.95vw, 14px)' }}>
@@ -212,40 +212,40 @@ function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> })
           </div>
 
           {/* Right — overlapping captain circles + small book-icon accent */}
-          <div className="hidden md:flex justify-center md:justify-end items-center">
-            <div className="relative w-[270px] h-[340px] lg:w-[420px] lg:h-[440px]">
+          <div className="hidden md:flex justify-center lg:justify-end items-center">
+            <div className="relative w-[320px] h-[380px] lg:w-[420px] lg:h-[440px]">
               {/* Small book-icon decoration — upper area, butter background */}
-              <div className="absolute left-[60px] top-0 z-30 lg:left-[100px]">
+              <div className="absolute left-[70px] top-0 z-30 lg:left-[100px]">
                 <div
-                  className="w-[68px] h-[68px] lg:w-[88px] lg:h-[88px] rounded-full flex items-center justify-center border-4 border-ink-900"
+                  className="w-[72px] h-[72px] lg:w-[88px] lg:h-[88px] rounded-full flex items-center justify-center border-4 border-ink-900"
                   style={{ backgroundColor: '#EFE183', boxShadow: '0 8px 16px rgba(0,0,0,0.35)' }}
                 >
-                  <span className="text-[34px] lg:text-[44px] leading-none" aria-hidden="true" role="img">📖</span>
+                  <span className="text-[36px] lg:text-[44px] leading-none" aria-hidden="true" role="img">📖</span>
                 </div>
               </div>
 
               {/* Dickie Bush — top-right, forest bg, behind */}
               <div className="absolute right-0 top-0 z-10 flex flex-col items-center">
                 <div
-                  className="w-[140px] h-[140px] lg:w-[210px] lg:h-[210px] rounded-full overflow-hidden border-4 border-ink-900"
+                  className="w-[170px] h-[170px] lg:w-[210px] lg:h-[210px] rounded-full overflow-hidden border-4 border-ink-900"
                   style={{ backgroundColor: '#4A7C59' }}
                 >
                   <img src="/images/sps/dickie-circle.png" alt="Dickie Bush" className="w-full h-full object-cover object-top" />
                 </div>
-                <p className="font-display font-black uppercase text-paper-100 mt-2.5 text-[15px] lg:text-[18px] tracking-caps-lg">Dickie Bush</p>
-                <p className="font-sans text-[9px] lg:text-[10px] font-bold uppercase tracking-caps text-ink-300 mt-1 text-center">Co-Founder,<br />Ship 30 for 30</p>
+                <p className="font-display font-black uppercase text-paper-100 mt-2.5 text-[16px] lg:text-[18px] tracking-caps-lg">Dickie Bush</p>
+                <p className="font-sans text-[10px] font-bold uppercase tracking-caps text-ink-300 mt-1 text-center">Co-Founder,<br />Ship 30 for 30</p>
               </div>
 
               {/* Nicolas Cole — bottom-left, rust bg, in front (overlaps Dickie) */}
               <div className="absolute left-0 bottom-0 z-20 flex flex-col items-center">
                 <div
-                  className="w-[180px] h-[180px] lg:w-[260px] lg:h-[260px] rounded-full overflow-hidden border-4 border-ink-900"
+                  className="w-[210px] h-[210px] lg:w-[260px] lg:h-[260px] rounded-full overflow-hidden border-4 border-ink-900"
                   style={{ backgroundColor: '#B8633A' }}
                 >
                   <img src="/images/sps/cole-circle.png" alt="Nicolas Cole" className="w-full h-full object-cover object-top" />
                 </div>
-                <p className="font-display font-black uppercase text-paper-100 mt-2.5 text-[15px] lg:text-[18px] tracking-caps-lg">Nicolas Cole</p>
-                <p className="font-sans text-[9px] lg:text-[10px] font-bold uppercase tracking-caps text-ink-300 mt-1 text-center">Co-Founder,<br />Premium Ghostwriting Academy</p>
+                <p className="font-display font-black uppercase text-paper-100 mt-2.5 text-[16px] lg:text-[18px] tracking-caps-lg">Nicolas Cole</p>
+                <p className="font-sans text-[10px] font-bold uppercase tracking-caps text-ink-300 mt-1 text-center">Co-Founder,<br />Premium Ghostwriting Academy</p>
               </div>
             </div>
           </div>
@@ -326,7 +326,7 @@ function Stats() {
         </div>
 
         {/* Two-column: product box left, 2x3 stat grid right */}
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-10 md:gap-14 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-10 lg:gap-14 items-center">
           {/* Left — product box */}
           <div className="flex justify-center">
             <img
@@ -543,7 +543,7 @@ function Captains() {
 
   return (
     <section id="captains" className="bg-ink-900 py-20 md:py-28 px-5 md:px-8">
-      <div className="max-w-container mx-auto grid md:grid-cols-[1.2fr_1fr] gap-12 md:gap-16 items-start">
+      <div className="max-w-container mx-auto grid lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-start">
         {/* Left — headline + subhead + stat pills */}
         <div>
           <Eyebrow className="text-rust-500 mb-5">Meet Your Instructors</Eyebrow>
