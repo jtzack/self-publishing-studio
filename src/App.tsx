@@ -214,11 +214,11 @@ function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> })
           {/* Right — overlapping captain circles */}
           <div className="hidden md:flex justify-center md:justify-end items-center">
             <div className="relative w-[380px] h-[460px] lg:w-[440px] lg:h-[500px]">
-              {/* Dickie Bush — top-right, sage bg */}
+              {/* Dickie Bush — top-right, navy bg */}
               <div className="absolute right-0 top-0 z-20 flex flex-col items-center">
                 <div
                   className="w-[170px] h-[170px] lg:w-[200px] lg:h-[200px] rounded-full overflow-hidden border-4 border-ink-900"
-                  style={{ backgroundColor: '#6FA86E' }}
+                  style={{ backgroundColor: '#1E3550' }}
                 >
                   <img src="/images/sps/dickie-circle.png" alt="Dickie Bush" className="w-full h-full object-cover object-top" />
                 </div>
