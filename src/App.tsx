@@ -211,24 +211,14 @@ function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> })
             <CountdownTimer targetDate={CART_CLOSE_DATE} />
           </div>
 
-          {/* Right — overlapping captain circles + book-icon accent */}
+          {/* Right — overlapping captain circles */}
           <div className="hidden md:flex justify-center md:justify-end items-center">
             <div className="relative w-[380px] h-[460px] lg:w-[440px] lg:h-[500px]">
-              {/* Small book-icon decoration — upper-left, butter background */}
-              <div className="absolute left-[40px] top-[10px] z-30">
-                <div
-                  className="w-[78px] h-[78px] lg:w-[88px] lg:h-[88px] rounded-full flex items-center justify-center border-4 border-ink-900"
-                  style={{ backgroundColor: '#EFE183' }}
-                >
-                  <img src="/images/sps/bookshelf-mark.svg" alt="" className="w-[44px] h-[44px] lg:w-[52px] lg:h-[52px]" />
-                </div>
-              </div>
-
-              {/* Dickie Bush — top-right, rust bg */}
+              {/* Dickie Bush — top-right, sage bg */}
               <div className="absolute right-0 top-0 z-20 flex flex-col items-center">
                 <div
                   className="w-[170px] h-[170px] lg:w-[200px] lg:h-[200px] rounded-full overflow-hidden border-4 border-ink-900"
-                  style={{ backgroundColor: '#B8633A' }}
+                  style={{ backgroundColor: '#6FA86E' }}
                 >
                   <img src="/images/sps/dickie-circle.png" alt="Dickie Bush" className="w-full h-full object-cover object-top" />
                 </div>
@@ -236,11 +226,11 @@ function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> })
                 <p className="font-sans text-[10px] font-bold uppercase tracking-caps text-ink-300 mt-1 text-center">Co-Founder,<br />Ship 30 for 30</p>
               </div>
 
-              {/* Nicolas Cole — bottom-left, navy bg */}
+              {/* Nicolas Cole — bottom-left, rust bg */}
               <div className="absolute left-0 bottom-0 z-10 flex flex-col items-center">
                 <div
                   className="w-[200px] h-[200px] lg:w-[230px] lg:h-[230px] rounded-full overflow-hidden border-4 border-ink-900"
-                  style={{ backgroundColor: '#1E3550' }}
+                  style={{ backgroundColor: '#B8633A' }}
                 >
                   <img src="/images/sps/cole-circle.png" alt="Nicolas Cole" className="w-full h-full object-cover object-top" />
                 </div>
