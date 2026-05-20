@@ -180,7 +180,7 @@ function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> })
         <div className="max-w-container mx-auto w-full px-5 md:px-8 py-6 md:py-8 grid md:grid-cols-[1.4fr_1fr] gap-8 md:gap-10 lg:gap-14 items-center">
           {/* Left — eyebrow + headline + subhead + CTA + countdown */}
           <div className="max-w-[680px]">
-            <p className="font-sans font-bold uppercase tracking-caps text-rust-500 mb-4 md:mb-5" style={{ fontSize: 'clamp(11px, 0.95vw, 14px)' }}>
+            <p className="font-sans font-bold uppercase tracking-caps text-butter-500 mb-4 md:mb-5" style={{ fontSize: 'clamp(11px, 0.95vw, 14px)' }}>
               Self-Publishing Studio LIVE
             </p>
             <h1
@@ -246,24 +246,24 @@ function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> })
 }
 
 /* ═══════════════════════════════════════════════════════════
-   WHY WRITE A BOOK — The opportunity, distilled from Cole's essay
+   WHY WRITE A BOOK — The opportunity
    ═══════════════════════════════════════════════════════════ */
 function WhyWriteABook() {
   const reasons = [
     {
       num: '01',
-      title: 'You love the craft.',
-      body: "Writing a book is the ultimate stress-test for whether you truly understand a topic — and the ultimate vehicle for clarifying your own thinking. It's hard. But it's a fun kind of hard, and one of the only skills that pays a high dividend in long-term fulfillment. The measure of success isn't money. It's completion. “I wrote a book.”",
+      title: 'Master the craft.',
+      body: 'Writing a book is the ultimate stress-test for whether you truly understand a topic. Finish one and you finish a version of yourself.',
     },
     {
       num: '02',
-      title: 'You want to be the authority.',
-      body: "A book is the new business card. When you're an “author,” your positioning in your industry goes up — full stop. It doesn't matter whether you got a book deal or self-published. Writing a book takes effort most people aren't willing to put forth, which means simply going through the effort elevates you above everyone else in your niche.",
+      title: 'Claim the authority.',
+      body: "A book is the new business card. The moment you're an author, your positioning in your niche goes up — full stop.",
     },
     {
       num: '03',
-      title: 'You want a business asset.',
-      body: "A great non-fiction book is the entry point to your entire ecosystem. Alex Hormozi's $100M books feed into his private equity company. Cole's Art & Business of Online Writing feeds Ship 30, Write With AI, AI Writing Skool, and Premium Ghostwriting Academy. The book has to be valuable on its own — and when it is, readers naturally ask, “How else can you help me?”",
+      title: 'Build a business asset.',
+      body: "A great non-fiction book is the front door to your entire ecosystem — the asset that turns readers into subscribers, students, and clients.",
     },
   ]
 
@@ -271,36 +271,19 @@ function WhyWriteABook() {
     <section className="bg-paper-100 py-20 md:py-28 px-5 md:px-8">
       <div className="max-w-container mx-auto">
         <Eyebrow className="text-rust-500 mb-3">The opportunity</Eyebrow>
-        <Display size="m" className="text-ink-900 mb-5 max-w-[920px]">
+        <Display size="m" className="text-ink-900 mb-12 max-w-[920px]">
           Why Write A Book?<br />
           <span className="text-rust-500">And Why Now?</span>
         </Display>
-        <p className="font-serif text-[18px] md:text-[19px] text-ink-700 leading-[1.55] max-w-[760px] mb-14">
-          There are lots of reasons people are motivated to write a book &mdash; and all of them are correct.
-          But writing a book is hard work, which means you need to be emotionally connected to a <em>reason</em> to
-          go through all the effort. Over the past 10 years, Cole has written 10+ non-fiction books and unlocked
-          radically different outcomes from each one. Here are the three biggest reasons he&rsquo;d encourage you to write yours.
-        </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {reasons.map((r) => (
             <div key={r.num} className="bg-paper-200 border border-paper-300 rounded-[4px] p-7 md:p-8 flex flex-col">
-              <p className="font-display font-black text-[clamp(48px,5vw,72px)] leading-none text-rust-500 mb-4">{r.num}</p>
-              <Display size="s" as="h3" className="text-ink-900 mb-4" style={{ fontSize: 'clamp(22px, 2.4vw, 30px)' }}>{r.title}</Display>
-              <p className="font-serif text-[15px] md:text-[16px] leading-[1.6] text-ink-700">{r.body}</p>
+              <p className="font-display font-black text-[clamp(40px,4.5vw,60px)] leading-none text-rust-500 mb-4">{r.num}</p>
+              <Display size="s" as="h3" className="text-ink-900 mb-3" style={{ fontSize: 'clamp(22px, 2.4vw, 30px)' }}>{r.title}</Display>
+              <p className="font-serif text-[16px] leading-[1.55] text-ink-700">{r.body}</p>
             </div>
           ))}
-        </div>
-
-        <div className="mt-14 max-w-[820px]">
-          <p className="font-serif italic text-[17px] md:text-[19px] leading-[1.55] text-ink-700 border-l-4 border-rust-500 pl-5">
-            &ldquo;The Art &amp; Business of Online Writing has sold tens of thousands of copies, been translated into Korean,
-            and generated $500,000+ in royalties &mdash; and the ideas in it became the foundation for Ship 30 for 30,
-            which went on to generate millions of dollars in revenue. Category Pirates added another $150K/yr in
-            newsletter subscriptions, $100K/yr in Amazon royalties, and over $2,000,000 in consulting deals on the
-            back of the publishing business.&rdquo;
-          </p>
-          <p className="font-sans text-[12px] font-bold uppercase tracking-caps text-rust-500 mt-4">&mdash; Nicolas Cole</p>
         </div>
       </div>
     </section>
@@ -504,65 +487,59 @@ function Captains() {
   const captains = [
     {
       name: 'Nicolas Cole',
-      role: 'Lead Instructor',
-      handle: '@Nicolascole77',
+      role: 'Co-Founder, Ship 30 for 30 & Premium Ghostwriting Academy',
       img: '/images/sps/cole-headshot.png',
-      bullets: [
-        'Author of 10+ non-fiction books — including <em>The Art &amp; Business of Online Writing</em>, which has sold tens of thousands of copies, been translated into Korean, and generated <strong>$500,000+ in royalties</strong>.',
-        'Co-founder of Category Pirates: <strong>$150K/yr</strong> newsletter on Substack, <strong>$100K/yr</strong> in Amazon royalties, and <strong>$2M+ in consulting deals</strong> on the back of the publishing business.',
-        'Built <strong>Ship 30 for 30</strong> into a digital writing program with <strong>10,000+ graduates</strong> and millions in revenue — all on the foundation of one self-published book.',
-        '#1 most-read writer on Quora, with <strong>100M+ views</strong>. Has published 4,000+ essays online and ghostwritten for Fortune 500 executives, public CEOs, and 8-figure founders.',
-      ],
+      bio: 'Author of 10+ non-fiction books, including The Art & Business of Online Writing. #1 most-read writer on Quora with 100M+ views. Co-founder of Ship 30 for 30 and Premium Ghostwriting Academy. Generated $1,000,000+ in self-published royalties on the back of his books.',
     },
     {
       name: 'Dickie Bush',
-      role: 'Co-Captain',
-      handle: '@dickiebush',
+      role: 'Co-Founder, Ship 30 for 30',
       img: '/images/sps/dickie-headshot.png',
-      bullets: [
-        "Founder of Ship 30 for 30 — the fastest-growing cohort-based writing program on the internet with 10,000+ graduates.",
-        "Former BlackRock trader turned digital entrepreneur. Built a $20M/year writing business from a daily tweet.",
-      ],
+      bio: 'Former Wall Street trader at BlackRock turned digital entrepreneur. Creator of Ship 30 for 30—the fastest-growing cohort-based writing program on the internet. Used email and newsletters to sell $20,000,000 in digital products.',
     },
   ]
 
+  const stats = [
+    '10+ Published Books',
+    '$1,000,000+ In Royalties',
+    '10,000+ Students Taught',
+    '$20M+ In Digital Products',
+  ]
+
   return (
-    <section id="captains" className="bg-paper-100 py-20 md:py-28 px-5 md:px-8">
-      <div className="max-w-container mx-auto">
-        <Eyebrow className="text-rust-500 mb-3">Your instructors</Eyebrow>
-        <Display size="m" className="text-ink-900 max-w-[1000px] mb-5">
-          Learn from the writer who&rsquo;s<br />
-          <span className="text-rust-500">done this 10+ times.</span>
-        </Display>
-        <p className="font-serif text-[18px] md:text-[19px] text-ink-700 leading-[1.55] max-w-[760px] mb-14">
-          You don&rsquo;t need a theory class. You need the system from someone who&rsquo;s already published the books,
-          banked the royalties, and built the business on the back of them.
-        </p>
-        <div className="grid md:grid-cols-[1.5fr_1fr] gap-5">
+    <section id="captains" className="bg-ink-900 py-20 md:py-28 px-5 md:px-8">
+      <div className="max-w-container mx-auto grid md:grid-cols-[1.2fr_1fr] gap-12 md:gap-16 items-start">
+        {/* Left — headline + subhead + stat pills */}
+        <div>
+          <Eyebrow className="text-rust-500 mb-5">Meet Your Instructors</Eyebrow>
+          <Display size="m" className="text-paper-100 mb-6">
+            Built by an author<br />
+            <span className="text-butter-500">with 10+ published books.</span>
+          </Display>
+          <p className="font-serif text-[17px] text-ink-200 leading-[1.55] max-w-[520px] mb-8">
+            Created by the founders of Ship 30 for 30 &amp; Premium Ghostwriting Academy.
+          </p>
+          <div className="flex flex-wrap gap-2.5">
+            {stats.map((s) => (
+              <span key={s} className="inline-flex items-center bg-rust-500 text-paper-100 font-sans text-[12px] font-bold uppercase tracking-caps px-4 py-2 rounded-full">
+                {s}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Right — stacked instructor cards */}
+        <div className="flex flex-col gap-5">
           {captains.map((c) => (
-            <div key={c.name} className="bg-paper-200 border border-paper-300 rounded-[4px] p-7 md:p-9 flex flex-col gap-5">
-              <div className="flex items-center gap-5">
-                <div className="w-[88px] h-[88px] rounded-full overflow-hidden flex-shrink-0 border-2 border-ink-900">
-                  <img src={c.img} alt={c.name} className="w-full h-full object-cover object-top" />
-                </div>
-                <div>
-                  <Display size="s" className="text-ink-900">{c.name}</Display>
-                  <p className="font-sans font-bold text-[11px] tracking-caps uppercase text-rust-500 mt-2">
-                    {c.role} &middot; 🐦 {c.handle}
-                  </p>
-                </div>
+            <div key={c.name} className="flex gap-5 items-start">
+              <div className="w-[88px] h-[88px] md:w-[96px] md:h-[96px] rounded-[4px] overflow-hidden flex-shrink-0 border border-ink-700">
+                <img src={c.img} alt={c.name} className="w-full h-full object-cover object-top" />
               </div>
-              <ul className="flex flex-col gap-3.5">
-                {c.bullets.map((b, i) => (
-                  <li key={i} className="flex gap-3">
-                    <span className="text-rust-500 mt-1 flex-shrink-0">→</span>
-                    <span
-                      className="font-serif text-[15px] md:text-[16px] leading-[1.55] text-ink-700 [&_em]:italic [&_strong]:font-bold [&_strong]:text-ink-900"
-                      dangerouslySetInnerHTML={{ __html: b }}
-                    />
-                  </li>
-                ))}
-              </ul>
+              <div>
+                <p className="font-display font-black text-[20px] md:text-[22px] text-paper-100 uppercase tracking-caps-lg leading-none">{c.name}</p>
+                <p className="font-sans font-bold text-[11px] uppercase tracking-caps text-rust-500 mt-2 mb-3">{c.role}</p>
+                <p className="font-serif text-[15px] leading-[1.55] text-ink-200">{c.bio}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -763,10 +740,15 @@ function Pricing() {
     <section className="bg-ink-800 py-24 md:py-32 px-5 md:px-8">
       <div className="max-w-narrow mx-auto text-center">
         <Eyebrow className="mb-4">Join The Bootcamp</Eyebrow>
-        <Display size="m" className="text-paper-100 mb-12">
-          Want To Write Your First<br />
-          <span className="text-butter-500">(Or Next) Non-Fiction Book<br />In 14 Days?</span>
-        </Display>
+        <h2
+          className="font-display font-black uppercase text-paper-100 tracking-display mb-12"
+          style={{ fontSize: 'clamp(28px, 4.2vw, 56px)', lineHeight: 1.0 }}
+        >
+          Want To Write Your<br />
+          First (Or Next)<br />
+          <span className="text-butter-500">Non-Fiction Book</span><br />
+          In 14 Days?
+        </h2>
 
         <div className="max-w-[560px] mx-auto rounded-[4px] overflow-hidden shadow-hard-lg">
           {/* Top: value stack */}
@@ -945,7 +927,7 @@ function StickyCtaBar({ heroCtaRef }: { heroCtaRef: React.RefObject<HTMLAnchorEl
           href={DEFAULT_CTA_URL}
           className="bg-butter-500 text-ink-900 font-sans font-bold uppercase text-[13px] tracking-caps px-6 py-2.5 rounded-[3px] hover:bg-butter-400 transition-colors mx-auto md:mx-0"
         >
-          Join SPS LIVE &mdash; $800
+          Join Now &mdash; $800
         </a>
       </div>
     </div>
