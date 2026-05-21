@@ -626,6 +626,11 @@ function BookLibrary() {
     </section>
   )
 }
+
+/* ═══════════════════════════════════════════════════════════
+   MINI-COURSES — Product box renders
+   ═══════════════════════════════════════════════════════════ */
+function MiniCourses() {
   const courses = [
     {
       img: '/images/sps/product-box-manuscriptos.png',
