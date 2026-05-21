@@ -579,39 +579,24 @@ function Captains() {
           ))}
         </div>
       </div>
-    </section>
-  )
-}
 
-/* ═══════════════════════════════════════════════════════════
-   BOOK LIBRARY — Cole's published library, beneath Captains
-   ═══════════════════════════════════════════════════════════ */
-function BookLibrary() {
-  const covers = [
-    { src: '/images/sps/book_artbiz.webp', alt: 'The Art & Business of Online Writing' },
-    { src: '/images/sps/book_ghost.webp', alt: 'The Art & Business of Ghostwriting' },
-    { src: '/images/sps/book_22laws.jpg', alt: 'The 22 Laws of Online Writing' },
-    { src: '/images/sps/book_niche.jpg', alt: 'Niche Down' },
-    { src: '/images/sps/book_pillars.png', alt: 'The 8 Pillars of Premium Ghostwriting' },
-    { src: '/images/sps/book_career.webp', alt: 'Writer Career Paths' },
-    { src: '/images/sps/book_confessions.webp', alt: 'Confessions of a Teenage Gamer' },
-    { src: '/images/sps/book_snow.jpg', alt: 'Snow Leopard' },
-  ]
-
-  return (
-    <section className="bg-ink-800 py-20 md:py-28 px-5 md:px-8">
-      <div className="max-w-container mx-auto">
-        <Eyebrow className="text-rust-500 mb-4">Cole's published library</Eyebrow>
-        <Display size="m" className="text-paper-100 mb-12 max-w-[960px]">
-          Books that have sold<br />
-          <span className="text-butter-500">tens of thousands of copies.</span>
-        </Display>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-7">
-          {covers.map((c) => (
+      {/* Book covers row — quiet evidence under the stat-pill claim */}
+      <div className="max-w-container mx-auto mt-12 lg:mt-16 pt-10 lg:pt-12 border-t border-ink-700">
+        <div className="grid grid-cols-4 lg:grid-cols-8 gap-3 md:gap-4">
+          {[
+            { src: '/images/sps/book_artbiz.webp', alt: 'The Art & Business of Online Writing' },
+            { src: '/images/sps/book_ghost.webp', alt: 'The Art & Business of Ghostwriting' },
+            { src: '/images/sps/book_22laws.jpg', alt: 'The 22 Laws of Online Writing' },
+            { src: '/images/sps/book_niche.jpg', alt: 'Niche Down' },
+            { src: '/images/sps/book_pillars.png', alt: 'The 8 Pillars of Premium Ghostwriting' },
+            { src: '/images/sps/book_career.webp', alt: 'Writer Career Paths' },
+            { src: '/images/sps/book_confessions.webp', alt: 'Confessions of a Teenage Gamer' },
+            { src: '/images/sps/book_snow.jpg', alt: 'Snow Leopard' },
+          ].map((c) => (
             <div
               key={c.src}
-              className="aspect-[2/3] overflow-hidden rounded-[3px] bg-ink-900 transition-transform duration-200 hover:-translate-y-1"
-              style={{ boxShadow: '6px 6px 0 #08111F' }}
+              className="aspect-[2/3] overflow-hidden rounded-[2px] bg-ink-800 transition-transform duration-200 hover:-translate-y-1"
+              style={{ boxShadow: '4px 4px 0 #08111F' }}
             >
               <img
                 src={c.src}
@@ -1031,7 +1016,6 @@ export default function App() {
       <FadeIn><WhyWriteABook /></FadeIn>
       <FadeIn><Stats /></FadeIn>
       <FadeIn><Captains /></FadeIn>
-      <FadeIn><BookLibrary /></FadeIn>
       <FadeIn><IsThisForYou /></FadeIn>
       <FadeIn><Curriculum /></FadeIn>
       <FadeIn><MiniCourses /></FadeIn>
