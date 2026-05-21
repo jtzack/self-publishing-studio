@@ -397,8 +397,8 @@ function IsThisForYou() {
     <section className="bg-ink-900 py-20 md:py-28 px-5 md:px-8">
       <div className="max-w-narrow mx-auto">
         <div className="border-l-[6px] border-butter-500 pl-5 mb-10">
-          <Eyebrow className="mb-2">Is the bootcamp right for you?</Eyebrow>
-          <Display size="m" className="text-paper-100">Let's find out.</Display>
+          <Eyebrow className="mb-2">Let's find out.</Eyebrow>
+          <Display size="m" className="text-paper-100">Is the bootcamp right for you?</Display>
         </div>
 
         <div className="space-y-3">
