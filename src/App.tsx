@@ -997,7 +997,7 @@ function StickyCtaBar({ heroCtaRef }: { heroCtaRef: React.RefObject<HTMLAnchorEl
           href={DEFAULT_CTA_URL}
           className="bg-butter-500 text-ink-900 font-sans font-bold uppercase text-[13px] tracking-caps px-6 py-2.5 rounded-[3px] hover:bg-butter-400 transition-colors mx-auto md:mx-0"
         >
-          Join Now &mdash; $800
+          Join Now
         </a>
       </div>
     </div>
