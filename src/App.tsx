@@ -656,7 +656,7 @@ function Bonuses() {
       emoji: '🤖',
       title: 'AI Author Autopilot',
       value: '$997 Value',
-      expires: 'Expires June 2, 2026',
+      expires: 'Expires May 26, 2026',
       desc: "Don't have time to write a book? This bonus gives you the exact AI system used to accelerate every stage of the writing process — from outlining to drafting to editing — without producing the kind of generic AI slop that kills your credibility. You do the thinking. AI handles the heavy lifting.",
     },
     {
@@ -664,7 +664,7 @@ function Bonuses() {
       emoji: '💰',
       title: 'Book Monetization Mastery',
       value: '$997 Value',
-      expires: 'Expires June 5, 2026',
+      expires: 'Expires May 29, 2026',
       desc: "Most books don't make money — because most authors treat the book as the product. This bonus shows you how to treat your book as the front door to your business: the entry point that turns readers into newsletter subscribers, digital product buyers, clients, and more. This is how a $10 book becomes a $10,000 customer.",
     },
   ]
