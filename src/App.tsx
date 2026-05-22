@@ -672,17 +672,17 @@ function MiniCourses() {
    BONUSES — 3 cards
    ═══════════════════════════════════════════════════════════ */
 function Bonuses() {
-  const bonuses: { num: number; emoji: string; title: string; value: string; desc: string; expires?: string }[] = [
+  const bonuses: { num: number; icon: string; title: string; value: string; desc: string; expires?: string }[] = [
     {
       num: 1,
-      emoji: '⚖️',
+      icon: '/images/sps/bonus_1.png',
       title: 'Indie vs. Traditional Crash Course',
       value: '$497 Value',
       desc: 'Should you self-publish or try to land a book deal? Most writers spend months going back and forth. This crash course breaks down both paths — the real tradeoffs, the money, the timeline, the creative control — so you can make the right decision for your book and your business, fast.',
     },
     {
       num: 2,
-      emoji: '🤖',
+      icon: '/images/sps/bonus_2.png',
       title: 'AI Author Autopilot',
       value: '$997 Value',
       expires: 'Expires May 26, 2026',
@@ -690,7 +690,7 @@ function Bonuses() {
     },
     {
       num: 3,
-      emoji: '💰',
+      icon: '/images/sps/bonus_3.png',
       title: 'Book Monetization Mastery',
       value: '$997 Value',
       expires: 'Expires May 29, 2026',
@@ -709,11 +709,11 @@ function Bonuses() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {bonuses.map((b) => (
             <div key={b.num} className="bg-ink-900 border border-ink-700 rounded-[4px] p-7 flex flex-col gap-4">
-              <div className="flex items-center justify-between">
-                <span className="font-sans text-[11px] font-bold uppercase tracking-caps text-butter-500">
+              <div className="flex items-start justify-between">
+                <span className="font-sans text-[11px] font-bold uppercase tracking-caps text-butter-500 mt-2">
                   Bonus #{b.num}
                 </span>
-                <span className="text-[28px] leading-none">{b.emoji}</span>
+                <img src={b.icon} alt="" className="w-16 h-16 md:w-[72px] md:h-[72px] -mt-1 -mr-1" />
               </div>
               <Display size="s" as="h3" className="text-paper-100">{b.title}</Display>
               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
