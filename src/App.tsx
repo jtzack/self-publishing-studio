@@ -816,7 +816,7 @@ function Pricing() {
   ]
 
   return (
-    <section className="bg-ink-800 py-24 md:py-32 px-5 md:px-8">
+    <section id="pricing" className="bg-ink-800 py-24 md:py-32 px-5 md:px-8">
       <div className="max-w-narrow mx-auto text-center">
         <Eyebrow className="mb-4">Join The Bootcamp</Eyebrow>
         <h2
@@ -992,7 +992,7 @@ function PatternBookCover({
    ═══════════════════════════════════════════════════════════ */
 function GuaranteeFinalCTA() {
   return (
-    <section className="bg-ink-900 py-20 md:py-28 px-5 md:px-8">
+    <section id="final-cta" className="bg-ink-900 py-20 md:py-28 px-5 md:px-8">
       <div className="max-w-container mx-auto">
         <div className="bg-butter-500 text-ink-900 p-10 md:p-14 rounded-[4px] shadow-hard-lg">
           <div className="grid lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-14 items-center">
@@ -1068,7 +1068,10 @@ function FAQ() {
             return (
               <div key={i} className="bg-ink-900">
                 <button
-                  onClick={() => setOpen(isOpen ? null : i)}
+                  onClick={() => {
+                    if (!isOpen) Fathom.trackEvent(`FAQ: ${faq.q}`)
+                    setOpen(isOpen ? null : i)
+                  }}
                   className="w-full bg-transparent border-none cursor-pointer px-6 md:px-7 py-5 md:py-6 flex items-center justify-between text-left text-paper-100 font-sans text-[16px] md:text-[18px] font-semibold leading-tight hover:text-butter-500 transition-colors"
                 >
                   <span className="pr-4">{faq.q}</span>
@@ -1157,6 +1160,55 @@ function StickyCtaBar({ heroCtaRef }: { heroCtaRef: React.RefObject<HTMLAnchorEl
    ═══════════════════════════════════════════════════════════ */
 export default function App() {
   const heroCtaRef = useRef<HTMLAnchorElement | null>(null)
+
+  useEffect(() => {
+    // Scroll-depth milestones — fire each threshold once per session
+    const thresholds = [25, 50, 75, 100]
+    const firedScroll = new Set<number>()
+    const onScroll = () => {
+      const total = document.documentElement.scrollHeight - window.innerHeight
+      if (total <= 0) return
+      const pct = (window.scrollY / total) * 100
+      for (const t of thresholds) {
+        if (pct >= t && !firedScroll.has(t)) {
+          firedScroll.add(t)
+          Fathom.trackEvent(`Scroll: ${t}%`)
+        }
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+
+    // Section-reach — fire once when each key section enters the viewport
+    const sectionNames: Record<string, string> = {
+      bonuses: 'Section: Bonuses',
+      pricing: 'Section: Pricing',
+      'final-cta': 'Section: Final CTA',
+      faq: 'Section: FAQ',
+    }
+    const firedSection = new Set<string>()
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting && !firedSection.has(entry.target.id)) {
+            firedSection.add(entry.target.id)
+            const name = sectionNames[entry.target.id]
+            if (name) Fathom.trackEvent(name)
+          }
+        }
+      },
+      { threshold: 0.3 },
+    )
+    for (const id of Object.keys(sectionNames)) {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    }
+
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      observer.disconnect()
+    }
+  }, [])
 
   return (
     <main className="min-h-screen bg-ink-900">
