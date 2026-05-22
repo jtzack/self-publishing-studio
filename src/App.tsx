@@ -1,10 +1,13 @@
 import './index.css'
 import { useState, useEffect, useRef } from 'react'
+import * as Fathom from 'fathom-client'
 
 const DEFAULT_CTA_URL = 'https://ship.samcart.com/products/self-publishing-studio-live'
 
 // Cart closes at midnight ET the night before Session 1 (June 1, 2026)
 const CART_CLOSE_DATE = new Date('2026-06-01T03:59:00Z')
+
+const trackCTA = (location: string) => Fathom.trackEvent(`CTA: ${location}`)
 
 /* ─── Fade-up on scroll ─── */
 function FadeIn({ children, className = '', delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -72,17 +75,20 @@ function PrimaryCTA({
   big,
   className = '',
   onRef,
+  track,
 }: {
   children: React.ReactNode
   href?: string
   big?: boolean
   className?: string
   onRef?: React.Ref<HTMLAnchorElement>
+  track?: string
 }) {
   return (
     <a
       ref={onRef}
       href={href}
+      onClick={() => track && trackCTA(track)}
       className={`inline-block font-sans font-bold uppercase bg-butter-500 text-ink-900 rounded-[3px] transition-colors duration-150 hover:bg-butter-400 active:bg-butter-600 ${
         big
           ? 'px-9 py-5 text-[16px] tracking-[0.08em] shadow-hard'
@@ -202,6 +208,7 @@ function Hero({ ctaRef }: { ctaRef: React.RefObject<HTMLAnchorElement | null> })
             <a
               ref={ctaRef}
               href={DEFAULT_CTA_URL}
+              onClick={() => trackCTA('Hero')}
               className="block w-full sm:max-w-[520px] text-center mx-auto lg:mx-0 bg-butter-500 text-ink-900 font-sans font-bold uppercase tracking-[0.08em] rounded-[3px] shadow-hard hover:bg-butter-400 active:bg-butter-600 transition-colors"
               style={{ padding: '20px 28px', fontSize: 'clamp(13px, 1.1vw, 16px)' }}
             >
@@ -353,6 +360,7 @@ function Stats() {
         <div className="mt-14 text-center">
           <a
             href={DEFAULT_CTA_URL}
+            onClick={() => trackCTA('Stats')}
             className="inline-block bg-butter-500 text-ink-900 font-sans font-bold uppercase tracking-[0.08em] rounded-[3px] shadow-hard hover:bg-butter-400 transition-colors"
             style={{ padding: '20px 36px', fontSize: 'clamp(13px, 1vw, 15px)' }}
           >
@@ -428,7 +436,7 @@ function IsThisForYou() {
 
         <div className="mt-12 text-center">
           <p className="font-serif text-[18px] italic text-ink-200 mb-6">If any of these sound like you&hellip; this bootcamp was made for you.</p>
-          <PrimaryCTA big>Join Self-Publishing Studio LIVE</PrimaryCTA>
+          <PrimaryCTA big track="Is This For You">Join Self-Publishing Studio LIVE</PrimaryCTA>
         </div>
       </div>
     </section>
@@ -505,6 +513,7 @@ function Curriculum() {
           </p>
           <a
             href={DEFAULT_CTA_URL}
+            onClick={() => trackCTA('Curriculum')}
             className="inline-block bg-ink-900 text-butter-500 font-sans font-bold uppercase text-[15px] tracking-[0.08em] px-9 py-5 rounded-[3px] hover:bg-ink-800 transition-colors shadow-hard"
           >
             Join Self-Publishing Studio LIVE
@@ -841,6 +850,7 @@ function Pricing() {
             <p className="font-display font-black text-[clamp(64px,10vw,96px)] text-ink-900 leading-none mt-2">$800</p>
             <a
               href={DEFAULT_CTA_URL}
+              onClick={() => trackCTA('Pricing')}
               className="inline-block bg-ink-900 text-butter-500 font-sans font-bold uppercase text-[15px] tracking-[0.08em] px-9 py-5 rounded-[3px] mt-6 hover:bg-ink-800 transition-colors"
               style={{ boxShadow: '8px 8px 0 rgba(8,17,31,0.35)' }}
             >
@@ -1000,6 +1010,7 @@ function GuaranteeFinalCTA() {
               </p>
               <a
                 href={DEFAULT_CTA_URL}
+                onClick={() => trackCTA('Final')}
                 className="inline-block bg-ink-900 text-butter-500 font-sans font-bold uppercase text-[17px] tracking-[0.08em] px-10 py-5 rounded-[3px] hover:bg-ink-800 transition-colors"
                 style={{ boxShadow: '8px 8px 0 rgba(8,17,31,0.35)' }}
               >
@@ -1131,6 +1142,7 @@ function StickyCtaBar({ heroCtaRef }: { heroCtaRef: React.RefObject<HTMLAnchorEl
         </div>
         <a
           href={DEFAULT_CTA_URL}
+          onClick={() => trackCTA('Sticky Bar')}
           className="bg-butter-500 text-ink-900 font-sans font-bold uppercase text-[13px] tracking-caps px-6 py-2.5 rounded-[3px] hover:bg-butter-400 transition-colors mx-auto md:mx-0"
         >
           Join Now
