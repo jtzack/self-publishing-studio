@@ -882,16 +882,15 @@ function PatternBookCover({
   subtitle?: string
   author?: string
 }) {
-  const W = 320
-  const H = 460
   const fg = '#EFE183' // butter-500
   const bg = '#0C1929' // ink-900
   return (
     <div
-      className="relative shrink-0"
+      className="relative"
       style={{
-        width: W,
-        height: H,
+        width: 'min(320px, 100%)',
+        aspectRatio: '320 / 460',
+        containerType: 'inline-size',
         boxShadow: '14px 14px 0 #0C1929, 0 30px 50px rgba(12,25,41,0.25)',
       }}
     >
@@ -902,21 +901,21 @@ function PatternBookCover({
           background: bg,
           backgroundImage:
             'url("/images/sps/book-pattern.svg"), radial-gradient(120% 80% at 30% 20%, rgba(255,255,255,0.04), transparent 60%)',
-          backgroundSize: '180px auto, auto',
+          backgroundSize: '56.25cqw auto, auto',
           backgroundBlendMode: 'screen, normal',
         }}
       >
         {/* Inner debossed frame */}
         <div
           className="absolute pointer-events-none"
-          style={{ inset: 12, border: '1px solid rgba(239,225,131,0.28)' }}
+          style={{ inset: '3.75cqw', border: '1px solid rgba(239,225,131,0.28)' }}
         />
         {/* Content stack */}
-        <div className="absolute flex flex-col" style={{ inset: 22 }}>
+        <div className="absolute flex flex-col" style={{ inset: '6.875cqw' }}>
           {/* Eyebrow */}
           <div
             className="font-sans font-bold uppercase"
-            style={{ fontSize: 10, letterSpacing: '0.18em', color: fg, opacity: 0.85 }}
+            style={{ fontSize: '3.125cqw', letterSpacing: '0.18em', color: fg, opacity: 0.85 }}
           >
             {eyebrow}
           </div>
@@ -925,7 +924,7 @@ function PatternBookCover({
             <div
               className="font-display font-black uppercase"
               style={{
-                fontSize: 60,
+                fontSize: '18.75cqw',
                 lineHeight: 0.86,
                 letterSpacing: '-0.01em',
                 color: fg,
@@ -938,8 +937,8 @@ function PatternBookCover({
               <div
                 className="font-sans"
                 style={{
-                  marginTop: 14,
-                  fontSize: 13,
+                  marginTop: '4.375cqw',
+                  fontSize: '4.0625cqw',
                   lineHeight: 1.35,
                   color: fg,
                   opacity: 0.78,
@@ -953,10 +952,10 @@ function PatternBookCover({
           </div>
           {/* Rule + author */}
           <div>
-            <div style={{ height: 2, width: 44, background: fg, opacity: 0.6, marginBottom: 12 }} />
+            <div style={{ height: '0.625cqw', width: '13.75cqw', background: fg, opacity: 0.6, marginBottom: '3.75cqw' }} />
             <div
               className="font-sans font-bold uppercase"
-              style={{ fontSize: 11, letterSpacing: '0.22em', color: fg }}
+              style={{ fontSize: '3.4375cqw', letterSpacing: '0.22em', color: fg }}
             >
               {author}
             </div>
@@ -977,9 +976,9 @@ function PatternBookCover({
         aria-hidden="true"
         className="absolute top-0"
         style={{
-          left: -8,
-          width: 8,
-          height: H,
+          left: '-2.5cqw',
+          width: '2.5cqw',
+          height: '100%',
           background: 'linear-gradient(90deg, rgba(0,0,0,0.5), #08111F)',
         }}
       />
