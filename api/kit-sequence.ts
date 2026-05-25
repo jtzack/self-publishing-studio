@@ -51,16 +51,6 @@ async function kitGet<T>(
   return res.json() as Promise<T>
 }
 
-// Public dashboard — never expose full subscriber emails.
-function maskEmail(email: string): string {
-  const at = email.indexOf('@')
-  if (at < 1) return '***'
-  const local = email.slice(0, at)
-  const domain = email.slice(at + 1)
-  const shown = local.slice(0, Math.min(2, local.length))
-  return `${shown}${'*'.repeat(Math.max(1, local.length - shown.length))}@${domain}`
-}
-
 function delayLabel(value: number, unit: string): string {
   if (!value) return 'Immediately'
   const singular = value === 1 ? unit.replace(/s$/, '') : unit
@@ -201,11 +191,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           published: e.published,
           delay: delayLabel(e.delay_value, e.delay_unit),
         })),
-      recentSubscribers: sampled.slice(0, 25).map((s) => ({
-        email: maskEmail(s.email_address),
-        state: s.state,
-        addedAt: s.added_at,
-      })),
       warnings,
     })
   } catch (err) {

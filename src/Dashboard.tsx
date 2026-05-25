@@ -20,7 +20,6 @@ interface SequenceData {
     daily: { date: string; count: number }[]
   }
   emails: { position: number; subject: string; published: boolean; delay: string }[]
-  recentSubscribers: { email: string; state: string; addedAt: string }[]
   warnings: string[]
 }
 
@@ -33,17 +32,6 @@ function formatDateTime(iso: string): string {
     hour: 'numeric',
     minute: '2-digit',
   })
-}
-
-function stateColor(state: string): string {
-  switch (state) {
-    case 'active':
-      return 'text-butter-500'
-    case 'completed':
-      return 'text-ink-300'
-    default:
-      return 'text-rust-400'
-  }
 }
 
 function KpiCard({ label, value, hint }: { label: string; value: string; hint?: string }) {
@@ -206,61 +194,31 @@ export default function Dashboard() {
               <DailyChart daily={data.recent.daily} />
             </div>
 
-            {/* Two columns: email schedule + recent subscribers */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
-              {/* Email schedule */}
-              <div className="bg-ink-800 border border-ink-700 rounded-[4px] p-6">
-                <p className="font-sans text-[11px] font-bold uppercase tracking-caps text-ink-300 mb-5">
-                  Email schedule
-                </p>
-                {data.emails.length === 0 ? (
-                  <p className="font-serif text-[15px] text-ink-300">No emails found.</p>
-                ) : (
-                  <div className="flex flex-col gap-px bg-ink-700 rounded-[3px] overflow-hidden">
-                    {data.emails.map((e) => (
-                      <div key={e.position} className="bg-ink-800 px-4 py-3 flex items-start gap-3">
-                        <span className="font-display font-black text-[18px] text-butter-500 leading-none w-7 flex-shrink-0 tabular-nums">
-                          {e.position + 1}
-                        </span>
-                        <div className="min-w-0 flex-1">
-                          <p className="font-sans text-[14px] text-paper-100 leading-snug truncate">{e.subject}</p>
-                          <p className="font-mono text-[11px] text-ink-300 mt-1">
-                            {e.delay}
-                            {!e.published && <span className="text-rust-400"> · draft</span>}
-                          </p>
-                        </div>
+            {/* Email schedule */}
+            <div className="bg-ink-800 border border-ink-700 rounded-[4px] p-6 mb-8">
+              <p className="font-sans text-[11px] font-bold uppercase tracking-caps text-ink-300 mb-5">
+                Email schedule
+              </p>
+              {data.emails.length === 0 ? (
+                <p className="font-serif text-[15px] text-ink-300">No emails found.</p>
+              ) : (
+                <div className="flex flex-col gap-px bg-ink-700 rounded-[3px] overflow-hidden">
+                  {data.emails.map((e) => (
+                    <div key={e.position} className="bg-ink-800 px-4 py-3 flex items-start gap-3">
+                      <span className="font-display font-black text-[18px] text-butter-500 leading-none w-7 flex-shrink-0 tabular-nums">
+                        {e.position + 1}
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <p className="font-sans text-[14px] text-paper-100 leading-snug truncate">{e.subject}</p>
+                        <p className="font-mono text-[11px] text-ink-300 mt-1">
+                          {e.delay}
+                          {!e.published && <span className="text-rust-400"> · draft</span>}
+                        </p>
                       </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Recent subscribers */}
-              <div className="bg-ink-800 border border-ink-700 rounded-[4px] p-6">
-                <p className="font-sans text-[11px] font-bold uppercase tracking-caps text-ink-300 mb-1">
-                  Recent subscribers
-                </p>
-                <p className="font-sans text-[11px] text-ink-400 mb-5">Emails masked for privacy</p>
-                {data.recentSubscribers.length === 0 ? (
-                  <p className="font-serif text-[15px] text-ink-300">No subscribers found.</p>
-                ) : (
-                  <div className="flex flex-col gap-px bg-ink-700 rounded-[3px] overflow-hidden">
-                    {data.recentSubscribers.map((s, i) => (
-                      <div key={i} className="bg-ink-800 px-4 py-2.5 flex items-center justify-between gap-3">
-                        <span className="font-mono text-[13px] text-paper-200 truncate">{s.email}</span>
-                        <div className="flex items-center gap-3 flex-shrink-0">
-                          <span className={`font-sans text-[11px] font-bold uppercase tracking-caps ${stateColor(s.state)}`}>
-                            {s.state}
-                          </span>
-                          <span className="font-mono text-[11px] text-ink-400 tabular-nums">
-                            {formatDateTime(s.addedAt)}
-                          </span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             <p className="font-sans text-[12px] text-ink-400">
