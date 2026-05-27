@@ -13,7 +13,7 @@ loads the LP, so these only apply to links whose destination is
 We use three params (no `utm_campaign` — there's a single promotion running):
 
 - **`utm_source`** — the specific platform the link lives on (`kit`, `x`, `linkedin`).
-- **`utm_medium`** — the channel *category* (`email`, `social`, `product`). Lets you roll multiple sources into one group and disambiguate a source that spans channels (e.g. Substack newsletter vs Substack Note).
+- **`utm_medium`** — the channel *category* (`email`, `social`, `product`, `referral`). Lets you roll multiple sources into one group and disambiguate a source that spans channels (e.g. Substack newsletter vs Substack Note). Use `referral` for a plain link on another web page/doc that isn't social or email.
 - **`utm_content`** — a slug identifying the individual email / post / placement. Optional; add it when you want per-item breakdowns.
 
 ## Channel grid
@@ -27,6 +27,7 @@ We use three params (no `utm_campaign` — there's a single promotion running):
 | Substack (posts/notes) | `substack` | `social` | slug |
 | YouTube | `youtube` | `social` | slug |
 | Web app | `webapp` | `product` | slug |
+| Notion | `notion` | `referral` | slug |
 
 ## Slug taxonomy (`utm_content`)
 
@@ -66,6 +67,7 @@ https://selfpublishingstudio.live/?utm_source=substack&utm_medium=email&utm_cont
 https://selfpublishingstudio.live/?utm_source=substack&utm_medium=social&utm_content=proof_studentwin
 https://selfpublishingstudio.live/?utm_source=youtube&utm_medium=social&utm_content=proof_studentwin
 https://selfpublishingstudio.live/?utm_source=webapp&utm_medium=product
+https://selfpublishingstudio.live/?utm_source=notion&utm_medium=referral&utm_content=resource_hub
 ```
 
 ## Reading it in Fathom
